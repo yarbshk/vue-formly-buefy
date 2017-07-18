@@ -1,0 +1,55 @@
+{
+  "name": "vue-formly-buefy",
+  "version": "1.0.0",
+  "description": "A plugin for Vue Formly which adds multiple form fields according to Buefy.",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "form",
+    "formly",
+    "buefy",
+    "bulma"
+  ],
+  "homepage": "https://github.com/yarbshk/vue-formly-buefy.git#readme",
+  "bugs": {
+    "url": "https://github.com/yarbshk/vue-formly-buefy.git/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/vue-formly-buefy.js",
+  "scripts": {
+    "test": "",
+    "watch": "./node_modules/.bin/webpack --progress --watch",
+    "start": "./node_modules/.bin/webpack-dev-server -d -w --content-base ./dist --hot --host 0.0.0.0",
+    "build": "./node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yarbshk/vue-formly-buefy.git"
+  },
+  "author": "Yuriy Rabeshko <george.rabeshko@gmail.com>",
+  "peerDependencies": {
+    "buefy": "^0.4.x",
+    "vue-formly": "^2.x"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.4.3",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-vue": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "vue": "^2.4.1",
+    "vue-formly": "^2.4.5",
+    "vue-loader": "^12.2.2",
+    "vue-style-loader": "^3.0.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1"
+  }
+}
