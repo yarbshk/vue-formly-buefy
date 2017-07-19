@@ -7,7 +7,8 @@ services:
     environment:
       - NODE_ENV=development
     ports:
-      - "8080:8080"
+      - "8080:8080" # Webpack development server
+      - "9876:9876" # Karma's port for testing in browsers
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
