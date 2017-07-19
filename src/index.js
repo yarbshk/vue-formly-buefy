@@ -1,9 +1,9 @@
-import Fields from './fields'
+import { formFields } from './components/form'
 
 const VueFormlyBuefy = {
   install (Vue, options) {
-    Fields.keys().forEach(key => {
-      Vue.$formly.addType(key, Fields(key))
+    Object.keys(formFields).forEach(key => {
+      Vue.$formly.addType(key, formFields[key])
     })
   }
 }
