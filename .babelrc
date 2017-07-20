@@ -1,12 +1,6 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "uglify": true
-      },
-      "useBuiltIns": true,
-      "modules": false
-    }]
+    ["env"]
   ],
   "plugins": ["transform-vue-jsx"]
 }
