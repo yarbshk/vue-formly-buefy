@@ -1,12 +1,10 @@
-import 'babel-polyfill' // https://github.com/babel/babel-brunch/issues/59#issuecomment-309039648
-
 import assert from 'assert'
 import { mount } from 'vuenit'
 
 import BaseFormlyMixin from 'Sources/mixins/base-formly.mixin'
 import BuefyFormFieldMixin from 'Sources/mixins/buefy-form-field.mixin'
 
-const props = {
+const props = () => ({
   form: {
     name: {
       $dirty: true,
@@ -24,12 +22,12 @@ const props = {
     }
   },
   to: {}
-}
+})
 
 function prepareComponent(component) {
   // Tested mixins are not sterling vue components
-  // therefore it's necessary complement an element
-  // by fake render function to be able to mount ones
+  // therefore it's necessary complement a mixin
+  // by fake render function to be able to mount one as a component
   return Object.assign(component, {
     render: h => h()
   })
@@ -40,28 +38,28 @@ describe('BaseFormlyMixin', function () {
 
   beforeEach(function () {
     vm = mount(prepareComponent(BaseFormlyMixin), {
-      props: props
+      props: props()
     })
   })
 
-  describe('methods / _getEl()', function () {
-    it('should return info from formly object for a field', function (done) {
+  describe('methods / _getValue()', function () {
+    it('should return info from a formly object to a field', function (done) {
       vm.$nextTick(() => {
-        assert.strictEqual(vm.getFormEl('$dirty'), true)
-        assert.equal(vm.getModelEl(), 'John Doe')
-        assert.equal(vm.getFieldEl('properties/position'), 'is-centered')
+        assert.strictEqual(vm.getFormValueOf('$dirty'), true)
+        assert.equal(vm.getModelValueOf(), 'John Doe')
+        assert.equal(vm.getFieldValueOf('properties/position'), 'is-centered')
         done()
       })
     })
 
     it('should return default values for non existing properties', function (done) {
       delete vm.model.name
-      assert.equal(vm.getModelEl(), undefined)
+      assert.equal(vm.getModelValueOf(), undefined)
       vm.$nextTick(() => {
-        assert.equal(vm.getFormEl('$fake'), undefined)
-        assert.equal(vm.getFormEl('$fake', null), null)
-        assert.equal(vm.getFieldEl('fake'), undefined)
-        assert.equal(vm.getFieldEl('fake', null), null)
+        assert.equal(vm.getFormValueOf('fake'), undefined)
+        assert.equal(vm.getFormValueOf('fake', null), null)
+        assert.equal(vm.getFieldValueOf('fake'), undefined)
+        assert.equal(vm.getFieldValueOf('fake', null), null)
         done()
       })
     })
@@ -73,14 +71,14 @@ describe('BuefyFormFieldMixin', function () {
 
   beforeEach(function () {
     vm = mount(prepareComponent(BuefyFormFieldMixin), {
-      props: props
+      props: props()
     })
   })
 
   describe('methods / initialize()', function () {
     it('should override form state', function () {
-      assert.strictEqual(vm.getFormEl('$dirty'), false)
-      assert.strictEqual(vm.getFormEl('$active'), false)
+      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+      assert.strictEqual(vm.getFormValueOf('$active'), false)
     })
   })
 })

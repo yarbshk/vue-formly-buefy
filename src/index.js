@@ -3,7 +3,11 @@ import { formFields } from './components/form'
 const VueFormlyBuefy = {
   install (Vue, options) {
     Object.keys(formFields).forEach(key => {
-      Vue.$formly.addType(key, formFields[key])
+      Vue.$formly.addType(
+        // Convert title case into kebab case
+        key.split(/(?=[A-Z])/).map(x => x.toLowerCase()).join('-'),
+        formFields[key]
+      )
     })
   }
 }
