@@ -44,6 +44,7 @@ export default {
       return this._getValue(this.to, path, defaultVal)
     },
     handleEvent (eventPath) {
+      // TODO: write universal event handler
       const eventHandler = this.getFieldValueOf(eventPath)
       if (typeof eventHandler === 'function') {
         eventHandler()
