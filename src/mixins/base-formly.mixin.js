@@ -31,14 +31,14 @@ export default {
       return value
     },
     // Shortcuts
-    getFieldEl (path, defaultVal = undefined) {
-      return this._getEl(this.field, path, defaultVal)
-    },
-    getModelEl (path, defaultVal = undefined) {
-      return this._getEl(this.model[this.field.key], path, defaultVal)
-    },
     getFormEl (path, defaultVal = undefined) {
       return this._getEl(this.form[this.field.key], path, defaultVal)
+    },
+    getModelEl () {
+      return this.model[this.field.key]
+    },
+    getFieldEl (path, defaultVal = undefined) {
+      return this._getEl(this.field, path, defaultVal)
     },
     handleEvent (eventPath) {
       const eventHandler = this.getFieldEl(eventPath)
