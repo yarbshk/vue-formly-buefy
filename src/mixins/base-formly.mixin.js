@@ -7,16 +7,16 @@ export default {
   },
   methods: {
     // Core access function
-    _getEl (obj, path, defaultVal = undefined) {
+    _getValue (obj, path, defaultVal = undefined) {
       /**
        * Gets values from objects and sets defaults by relative path
        * Used to bind elements from Formly config object to a tag attribute
        * @example
        * // returns 1
-       * _getEl({a: {b: {c: 1}}}, 'a/b/c')
+       * _getValue({a: {b: {c: 1}}}, 'a/b/c')
        * @example
        * // returns null
-       * _getEl({a: {b: {c: 1}}}, 'a/b/x', null)
+       * _getValue({a: {b: {c: 1}}}, 'a/b/x', null)
        */
       let value = defaultVal
       path.split('/').forEach((elem, i, arr) => {
@@ -31,30 +31,23 @@ export default {
       return value
     },
     // Shortcuts
-    getFormEl (path, defaultVal = undefined) {
-      return this._getEl(this.form[this.field.key], path, defaultVal)
+    getFormValueOf (path, defaultVal = undefined) {
+      return this._getValue(this.form[this.field.key], path, defaultVal)
     },
-    getModelEl () {
+    getModelValueOf () {
       return this.model[this.field.key]
     },
-    getFieldEl (path, defaultVal = undefined) {
-      return this._getEl(this.field, path, defaultVal)
+    getFieldValueOf (path, defaultVal = undefined) {
+      return this._getValue(this.field, path, defaultVal)
+    },
+    getToValueOf (path, defaultVal = undefined) {
+      return this._getValue(this.to, path, defaultVal)
     },
     handleEvent (eventPath) {
-      const eventHandler = this.getFieldEl(eventPath)
+      const eventHandler = this.getFieldValueOf(eventPath)
       if (typeof eventHandler === 'function') {
         eventHandler()
       }
-    }
-  },
-  watch: {
-    form () {
-      /**
-       * Force update DOM for a field when it's form changes
-       * This is required because tag attributes of the field
-       * which bind from Formly config object are not reactive
-       */
-      this.$forceUpdate()
     }
   }
 }
