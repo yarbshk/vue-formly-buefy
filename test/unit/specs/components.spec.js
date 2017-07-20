@@ -4,7 +4,7 @@ import assert from 'assert'
 import { mount } from 'vuenit'
 
 import VueFormlyBuefy from 'Sources'
-import BuefyFormField from 'Sources/components/form/BuefyFormField.vue'
+import BuefyFormField from 'Sources/components/form/BField.vue'
 
 Vue.use(VueFormly)
 Vue.use(VueFormlyBuefy)
@@ -23,7 +23,7 @@ describe('FormlyForm', function () {
     fields: [
       {
         key: 'name',
-        type: 'buefy-form-field',
+        type: 'b-field',
         templateOptions: {
           properties: {
             'label': 'Name',
@@ -72,7 +72,7 @@ describe('BuefyFormField', function () {
     },
     field: {
       key: 'name',
-      type: 'buefy-form-field',
+      type: 'b-field',
     },
     to: {
       properties: {
