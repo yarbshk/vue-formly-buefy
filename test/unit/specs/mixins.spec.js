@@ -1,8 +1,8 @@
 import assert from 'assert'
 import { mount } from 'vuenit'
 
-import BaseFormlyMixin from 'Sources/mixins/base-formly.mixin'
-import BuefyFormFieldMixin from 'Sources/mixins/buefy-form-field.mixin'
+import BaseFormlyFieldMixin from 'Sources/mixins/base-formly-field.mixin'
+import WrappedFormlyFieldMixin from 'Sources/mixins/wrapped-formly-field.mixin'
 
 const props = () => ({
   form: {
@@ -17,11 +17,12 @@ const props = () => ({
   field: {
     key: 'name',
     type: 'input',
+  },
+  to: {
     properties: {
       position: 'is-centered'
     }
-  },
-  to: {}
+  }
 })
 
 function prepareComponent(component) {
@@ -33,52 +34,48 @@ function prepareComponent(component) {
   })
 }
 
-describe('BaseFormlyMixin', function () {
+describe('BaseFormlyFieldMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(BaseFormlyMixin), {
+    vm = mount(prepareComponent(BaseFormlyFieldMixin), {
       props: props()
+    })
+  })
+
+  describe('created()', function () {
+    it('should override form state', function () {
+      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+      assert.strictEqual(vm.getFormValueOf('$active'), false)
     })
   })
 
   describe('methods / _getValue()', function () {
-    it('should return info from a formly object to a field', function (done) {
-      vm.$nextTick(() => {
-        assert.strictEqual(vm.getFormValueOf('$dirty'), true)
-        assert.equal(vm.getModelValueOf(), 'John Doe')
-        assert.equal(vm.getFieldValueOf('properties/position'), 'is-centered')
-        done()
-      })
+    it('should return info from a formly object to a field', function () {
+      assert.equal(vm.getModelValueOf(), 'John Doe')
+      assert.equal(vm.getFieldValueOf('type'), 'input')
+      assert.equal(vm.getToValueOf('properties/position'), 'is-centered')
     })
 
-    it('should return default values for non existing properties', function (done) {
+    it('should return defaults for non existing values', function () {
       delete vm.model.name
       assert.equal(vm.getModelValueOf(), undefined)
-      vm.$nextTick(() => {
-        assert.equal(vm.getFormValueOf('fake'), undefined)
-        assert.equal(vm.getFormValueOf('fake', null), null)
-        assert.equal(vm.getFieldValueOf('fake'), undefined)
-        assert.equal(vm.getFieldValueOf('fake', null), null)
-        done()
-      })
+      assert.equal(vm.getFormValueOf('fake'), undefined)
+      assert.equal(vm.getFormValueOf('fake', null), null)
+      assert.equal(vm.getFieldValueOf('fake'), undefined)
+      assert.equal(vm.getFieldValueOf('fake', null), null)
+      assert.equal(vm.getToValueOf('fake'), undefined)
+      assert.equal(vm.getToValueOf('fake', null), null)
     })
   })
 })
 
-describe('BuefyFormFieldMixin', function () {
+describe('WrappedFormlyFieldMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(BuefyFormFieldMixin), {
+    vm = mount(prepareComponent(WrappedFormlyFieldMixin), {
       props: props()
-    })
-  })
-
-  describe('methods / initialize()', function () {
-    it('should override form state', function () {
-      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
-      assert.strictEqual(vm.getFormValueOf('$active'), false)
     })
   })
 })

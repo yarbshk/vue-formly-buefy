@@ -4,7 +4,6 @@ import assert from 'assert'
 import { mount } from 'vuenit'
 
 import VueFormlyBuefy from 'Sources'
-import BuefyFormField from 'Sources/components/form/BField.vue'
 
 Vue.use(VueFormly)
 Vue.use(VueFormlyBuefy)
@@ -18,16 +17,38 @@ describe('FormlyForm', function () {
   const props = () => ({
     form: {},
     model: {
-      name: 'John Doe'
+      input: 'John Doe',
+      select: [1, 2, 3],
+      switch: true
     },
     fields: [
       {
-        key: 'name',
-        type: 'b-field',
+        key: 'input',
+        type: 'b-input',
         templateOptions: {
           properties: {
-            'label': 'Name',
-            'position': 'is-centered'
+            'label': 'Input'
+          }
+        }
+      },
+      {
+        key: 'select',
+        type: 'b-select',
+        templateOptions: {
+          wrapper: {
+            'type': 'is-black'
+          },
+          properties: {
+            'label': 'Select',
+          }
+        }
+      },
+      {
+        key: 'switch',
+        type: 'b-switch',
+        templateOptions: {
+          properties: {
+            'label': 'Switch',
           }
         }
       }
@@ -46,19 +67,6 @@ describe('FormlyForm', function () {
     props().fields.forEach(function (field, index) {
       it('should return just created field', function () {
         assert.notStrictEqual(vm.$findOne(field.type), null)
-      })
-    })
-
-    props().fields.forEach(function (field, index) {
-      it('should reactive change attributes of ' + field.key, function (done) {
-        const child = vm.$findOne(field.type)
-        // Change some attribute then check it's value on next tick
-        vm.fields[index].templateOptions.properties.position = 'is-left'
-        assert.strictEqual(child.getAttribute('position'), 'is-centered')
-        vm.$nextTick(() => {
-          assert.strictEqual(child.getAttribute('position'), 'is-left')
-          done()
-        })
       })
     })
   })
