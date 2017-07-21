@@ -1,11 +1,11 @@
 <template>
   <wrapper :is-wrapped="isWrapped" :properties="wrapperProperties">
-    <b-input v-bind="properties"
-             v-model="model[field.key]"
-             @blur="handleBlurEvent"
-             @focus="handleFocusEvent"
-             @change="handleChangeEvent">
-    </b-input>
+    <b-autocomplete v-bind="properties"
+                    v-model="model[field.key]"
+                    @blur="handleBlurEvent"
+                    @focus="handleFocusEvent"
+                    @change="handleChangeEvent">
+    </b-autocomplete>
   </wrapper>
 </template>
 

@@ -1,11 +1,9 @@
 <template>
   <wrapper :is-wrapped="isWrapped" :properties="wrapperProperties">
-    <b-input v-bind="properties"
-             v-model="model[field.key]"
-             @blur="handleBlurEvent"
-             @focus="handleFocusEvent"
-             @change="handleChangeEvent">
-    </b-input>
+    <b-switch v-bind="properties"
+              v-model="model[field.key]"
+              @change="handleChangeEvent">
+    </b-switch>
   </wrapper>
 </template>
 

@@ -1,12 +1,9 @@
-import BField from './BField.vue'
 import BInput from './BInput.vue'
+import BSelect from './BSelect.vue'
+import BSwitch from './BSwitch.vue'
 
-export const formFields = {
-  BInput
+export default {
+  BInput,
+  BSelect,
+  BSwitch
 }
-
-export const formAddons = {
-  BField
-}
-
-export default Object.assign(formFields, formAddons)
