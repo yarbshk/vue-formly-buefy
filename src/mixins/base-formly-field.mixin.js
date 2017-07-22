@@ -63,7 +63,7 @@ export default {
        * Take virgin of a field by using a blur or change event.
        * It's there only for user reference. Sets it once.
        */
-      if (!Boolean(this.getFormValueOf('$dirty'))) {
+      if (!this.getFormValueOf('$dirty')) {
         this.$set(this.form[this.field.key], '$dirty', false)
       }
     },
@@ -71,7 +71,7 @@ export default {
       /**
        * Representation of a focus event.
        */
-      const isActive = !Boolean(this.getFormValueOf('$active'))
+      const isActive = !this.getFormValueOf('$active')
       this.$set(this.form[this.field.key], '$active', isActive)
     },
     handleBlurEvent (event) {
