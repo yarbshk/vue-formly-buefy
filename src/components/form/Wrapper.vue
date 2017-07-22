@@ -1,9 +1,9 @@
 <template>
-  <b-field v-if="isWrapped" v-bind="properties">
-    <slot></slot>
-  </b-field>
-  <div v-else>
-    <slot></slot>
+  <div class="form-field-wrapper">
+    <b-field v-if="isWrapped" v-bind="properties">
+      <slot></slot>
+    </b-field>
+    <slot v-else></slot>
   </div>
 </template>
 
