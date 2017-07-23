@@ -11,7 +11,7 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import WrappedFormlyFieldMixin from '../../../mixins/base-formly-field.mixin'
+  import WrappedFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
 
   export default {
     mixins: [WrappedFormlyFieldMixin]
