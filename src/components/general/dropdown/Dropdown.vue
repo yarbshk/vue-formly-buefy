@@ -2,7 +2,9 @@
   <b-dropdown v-bind="properties">
     <vfb-button slot="trigger" :label="label" :icon="icon"></vfb-button>
     <vfb-dropdown-option v-for="(option, index) in options"
-                         v-bind="option"
+                         :label="option.label"
+                         :icon="option.icon"
+                         :properties="option.properties"
                          v-bind:key="index">
     </vfb-dropdown-option>
   </b-dropdown>
