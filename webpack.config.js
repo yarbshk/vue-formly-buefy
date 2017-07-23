@@ -37,6 +37,10 @@ const rules = [
   }
 ]
 
+const alias = {
+  src: path.resolve(__dirname, 'src')
+}
+
 module.exports = [
   {
     entry: path.resolve(__dirname, 'src/index'),
@@ -67,7 +71,10 @@ module.exports = [
         banner: banner,
         raw: true
       })
-    ]
+    ],
+    resolve: {
+      alias: alias
+    }
   },
   {
     entry: path.resolve(__dirname, 'src/index'),
@@ -95,6 +102,9 @@ module.exports = [
         banner: banner,
         raw: true
       })
-    ]
+    ],
+    resolve: {
+      alias: alias
+    }
   }
 ]

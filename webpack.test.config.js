@@ -8,7 +8,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: ['babel-loader']
       },
       {
         test: /\.vue$/,
@@ -24,7 +24,7 @@ module.exports = {
     alias: {
       vue$: 'vue/dist/vue.esm.js',
       vuenit: 'vuenit/lib/index.js',
-      Sources: path.resolve(__dirname, 'src')
+      src: path.resolve(__dirname, 'src')
     }
   }
 }
