@@ -1,13 +1,17 @@
-import FormComponents from './components/form'
+import { addTypes, wrapComponent } from './utils'
+
+import Field from './components/form/field'
+import Input from './components/form/input'
+import Switch from './components/form/switch'
 
 const VueFormlyBuefy = {
   install (Vue, options) {
-    Object.keys(FormComponents).forEach(key => {
-      Vue.$formly.addType(
-        // Convert title case into kebab case
-        key.split(/(?=[A-Z])/).map(x => x.toLowerCase()).join('-'),
-        FormComponents[key]
-      )
+    addTypes(Vue.$formly, {
+      // Straightforward
+      Input,
+      Switch,
+      // Combined
+      'input-with-field': wrapComponent(Input, Field.Wrapper)
     })
   }
 }
