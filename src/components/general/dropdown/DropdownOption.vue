@@ -15,7 +15,7 @@
       },
       properties: {
         type: Object,
-        default: {}
+        default: () => ({})
       }
     }
   }

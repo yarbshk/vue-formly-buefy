@@ -1,5 +1,5 @@
 <template>
-  <button v-bind="properties">
+  <button class="button" v-bind="properties">
     <span>{{ label }}</span>
     <b-icon v-if="icon" :icon="icon"></b-icon>
   </button>
@@ -15,7 +15,7 @@
       },
       properties: {
         type: Object,
-        default: {}
+        default: () => ({})
       }
     }
   }
