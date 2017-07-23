@@ -1,14 +1,14 @@
 import assert from 'assert'
 import { mount } from 'vuenit'
 
-import BaseFormlyFieldMixin from 'Sources/mixins/base-formly-field.mixin'
-import WrappedFormlyFieldMixin from 'Sources/mixins/wrapped-formly-field.mixin'
+import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
 
 const props = () => ({
   form: {
     name: {
       $dirty: true,
-      $active: false,
+      $active: false
     }
   },
   model: {
@@ -16,7 +16,7 @@ const props = () => ({
   },
   field: {
     key: 'name',
-    type: 'input',
+    type: 'input'
   },
   to: {
     properties: {
@@ -25,7 +25,7 @@ const props = () => ({
   }
 })
 
-function prepareComponent(component) {
+function prepareComponent (component) {
   // Tested mixins are not sterling vue components
   // therefore it's necessary complement a mixin
   // by fake render function to be able to mount one as a component
@@ -52,14 +52,14 @@ describe('BaseFormlyFieldMixin', function () {
 
   describe('methods / _getValue()', function () {
     it('should return info from a formly object to a field', function () {
-      assert.equal(vm.getModelValueOf(), 'John Doe')
+      assert.equal(vm.getModel(), 'John Doe')
       assert.equal(vm.getFieldValueOf('type'), 'input')
       assert.equal(vm.getToValueOf('properties/position'), 'is-centered')
     })
 
     it('should return defaults for non existing values', function () {
       delete vm.model.name
-      assert.equal(vm.getModelValueOf(), undefined)
+      assert.equal(vm.getModel(), undefined)
       assert.equal(vm.getFormValueOf('fake'), undefined)
       assert.equal(vm.getFormValueOf('fake', null), null)
       assert.equal(vm.getFieldValueOf('fake'), undefined)

@@ -3,7 +3,8 @@ import VueFormly from 'vue-formly'
 import assert from 'assert'
 import { mount } from 'vuenit'
 
-import VueFormlyBuefy from 'Sources'
+import VueFormlyBuefy from 'src'
+import Button from 'src/components/general/button'
 
 Vue.use(VueFormly)
 Vue.use(VueFormlyBuefy)
@@ -24,31 +25,32 @@ describe('FormlyForm', function () {
     fields: [
       {
         key: 'input',
-        type: 'b-input',
+        type: 'input-with-field',
         templateOptions: {
+          field: {
+            controls: {
+              before: [
+                {
+                  type: Button,
+                  options: {
+                    label: 'Button label',
+                    icon: 'add'
+                  }
+                }
+              ]
+            }
+          },
           properties: {
             'label': 'Input'
           }
         }
       },
       {
-        key: 'select',
-        type: 'b-select',
-        templateOptions: {
-          wrapper: {
-            'type': 'is-black'
-          },
-          properties: {
-            'label': 'Select',
-          }
-        }
-      },
-      {
         key: 'switch',
-        type: 'b-switch',
+        type: 'switch',
         templateOptions: {
           properties: {
-            'label': 'Switch',
+            'label': 'Switch'
           }
         }
       }
@@ -57,43 +59,8 @@ describe('FormlyForm', function () {
 
   let vm = null
 
-  beforeEach (function () {
-    vm = mount(FormComponent, {
-      props: props()
-    })
-  })
-
-  describe('bulk testing of fields', function () {
-    props().fields.forEach(function (field, index) {
-      it('should return just created field', function () {
-        assert.notStrictEqual(vm.$findOne(field.type), null)
-      })
-    })
-  })
-})
-
-describe('BuefyFormField', function () {
-  const props = () => ({
-    form: {},
-    model: {
-      name: 'John Doe'
-    },
-    field: {
-      key: 'name',
-      type: 'b-field',
-    },
-    to: {
-      properties: {
-        label: 'Name',
-        position: 'is-centered'
-      }
-    }
-  })
-
-  let vm = null
-
   beforeEach(function () {
-    vm = mount(BuefyFormField, {
+    vm = mount(FormComponent, {
       props: props()
     })
   })
