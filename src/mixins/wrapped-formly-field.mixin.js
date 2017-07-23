@@ -1,17 +1,17 @@
 import BaseFormlyFieldMixin from './base-formly-field.mixin'
-import Wrapper from '../components/form/Wrapper.vue'
 
 export default {
   mixins: [BaseFormlyFieldMixin],
-  computed: {
-    isWrapped () {
-      return Boolean(this.getToValueOf('wrapper'))
-    },
-    wrapperProperties () {
-      return this.getToValueOf('wrapper', {})
+  props: {
+    // Should be overridden by using a child wrapper
+    wrappedComponent: {
+      type: Object,
+      default: () => ({})
     }
   },
-  components: {
-    Wrapper
+  methods: {
+    // Override created() method of BaseFormlyFieldMixin.
+    // Prevent to the reinitialisation by a wrapped component.
+    created () {},
   }
 }
