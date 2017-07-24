@@ -53,6 +53,14 @@ describe('FormlyForm', function () {
             'label': 'Switch'
           }
         }
+      },
+      {
+        key: 'select',
+        type: 'select',
+        options: [
+          { label: 'A', options: [{ text: 'A', value: 'a' }]},
+          { label: 'B', options: [{ text: 'B', value: 'b' }]}
+        ]
       }
     ]
   })
