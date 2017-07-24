@@ -2,6 +2,7 @@ import { addTypes, wrapComponent } from './utils'
 
 import Field from './components/form/field'
 import Input from './components/form/input'
+import Checkbox from './components/form/checkbox'
 import Select from './components/form/select'
 import Switch from './components/form/switch'
 
@@ -10,6 +11,8 @@ const VueFormlyBuefy = {
     addTypes(Vue.$formly, {
       // Plain
       Input,
+      'checkbox': Checkbox.Checkbox,
+      'checkbox-group': Checkbox.CheckboxGroup,
       Select,
       Switch,
       // Combined
