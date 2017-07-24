@@ -1,7 +1,7 @@
 <template>
   <b-checkbox-group v-model="model[field.key]"
                     v-bind="properties"
-                    @change="handleChangeEvent">1
+                    @change="handleChangeEvent">
     <b-checkbox v-for="(option, index) in options"
                 v-bind:key="index"
                 v-text="option.text"

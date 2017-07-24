@@ -69,9 +69,13 @@ export default {
        * Formly provide boolean errors when error message doesn't set,
        * therefore it's necessary manually choose the human readable messages.
        */
-      let error, errors = this.getErrors()
+      let error
+      const errors = this.getErrors()
       Object.keys(errors).some(key => {
-        if (typeof errors[key] !== 'boolean') return error = errors[key]
+        if (typeof errors[key] !== 'boolean') {
+          error = errors[key]
+          return true
+        }
       })
       return error
     },
@@ -105,7 +109,9 @@ export default {
       /**
        * Representation of a focus event.
        */
-      const isActive = Boolean(force) || !this.getFormValueOf('$active')
+      const isActive = typeof force !== 'undefined'
+        ? Boolean(force)
+        : !this.getFormValueOf('$active')
       this.$set(this.form[this.field.key], '$active', isActive)
     },
     callCustomEventHandler (name, ...args) {
@@ -121,7 +127,7 @@ export default {
       this.callCustomEventHandler('blur', args)
     },
     handleFocusEvent (...args) {
-      this.toggleActiveState()
+      this.toggleActiveState(true)
       this.callCustomEventHandler('focus', args)
     },
     handleChangeEvent (...args) {
