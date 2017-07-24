@@ -69,13 +69,11 @@ export default {
        * Formly provide boolean errors when error message doesn't set,
        * therefore it's necessary manually choose the human readable messages.
        */
-      const errors = this.getErrors()
-      Object.keys(errors).forEach(key => {
-        const error = errors[key]
-        if (typeof error !== 'boolean') {
-          return error
-        }
+      let error, errors = this.getErrors()
+      Object.keys(errors).some(key => {
+        if (typeof errors[key] !== 'boolean') return error = errors[key]
       })
+      return error
     },
     getValidationState () {
       /**
@@ -83,7 +81,7 @@ export default {
        * It's necessary condition of a Formly form validation rules.
        */
       let type, message
-      if (!this.getFieldValueOf('$active') && !this.getFieldValueOf('$dirty')) {
+      if (!this.getFormValueOf('$active') && this.getFormValueOf('$dirty')) {
         if (Object.keys(this.getErrors()).length) {
           type = 'is-danger'
           message = this.getReadableErrorMessage()
@@ -100,14 +98,14 @@ export default {
        * It's there only for user reference. Sets it once.
        */
       if (!this.getFormValueOf('$dirty')) {
-        this.$set(this.form[this.field.key], '$dirty', false)
+        this.$set(this.form[this.field.key], '$dirty', true)
       }
     },
-    toggleActiveState () {
+    toggleActiveState (force) {
       /**
        * Representation of a focus event.
        */
-      const isActive = !this.getFormValueOf('$active')
+      const isActive = Boolean(force) || !this.getFormValueOf('$active')
       this.$set(this.form[this.field.key], '$active', isActive)
     },
     callCustomEventHandler (name, ...args) {
@@ -115,10 +113,11 @@ export default {
        * Search for implementation of a custom event handler.
        * Call the handler if it exists, in other case ignore.
        */
-      this.getToValueOf('events/' + name, () => {})(args)
+      return this.getToValueOf('events/' + name, () => {})(args)
     },
     handleBlurEvent (...args) {
       this.defineDirtyState()
+      this.toggleActiveState(false)
       this.callCustomEventHandler('blur', args)
     },
     handleFocusEvent (...args) {

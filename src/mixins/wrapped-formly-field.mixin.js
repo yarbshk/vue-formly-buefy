@@ -9,9 +9,7 @@ export default {
       default: () => ({})
     }
   },
-  methods: {
-    // Override created() method of BaseFormlyFieldMixin.
-    // Prevent to the reinitialisation by a wrapped component.
-    created () {}
-  }
+  // Override created() method of BaseFormlyFieldMixin.
+  // Prevent to the reinitialisation by a wrapped component.
+  created () {}
 }

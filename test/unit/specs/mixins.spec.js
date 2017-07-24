@@ -6,6 +6,12 @@ import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
 
 const props = () => ({
   form: {
+    $errors: {
+      name: {
+        required: 'Fill out this field!'
+      }
+    },
+    $valid: false,
     name: {
       $dirty: true,
       $active: false
@@ -16,9 +22,15 @@ const props = () => ({
   },
   field: {
     key: 'name',
-    type: 'input'
+    type: 'input',
+    required: true
   },
   to: {
+    events: {
+      change (args) {
+        return args
+      }
+    },
     properties: {
       position: 'is-centered'
     }
@@ -40,6 +52,12 @@ describe('BaseFormlyFieldMixin', function () {
   beforeEach(function () {
     vm = mount(prepareComponent(BaseFormlyFieldMixin), {
       props: props()
+    })
+  })
+
+  describe('computed', function () {
+    it('should return field properties', function () {
+      assert.deepEqual(vm.properties, props().to.properties)
     })
   })
 
@@ -68,6 +86,57 @@ describe('BaseFormlyFieldMixin', function () {
       assert.equal(vm.getToValueOf('fake', null), null)
     })
   })
+
+  describe('errors handling', function () {
+    it('should return readable error message', function () {
+      assert.equal(vm.getReadableErrorMessage(), 'Fill out this field!')
+    })
+
+    it('should return correct validation state', function () {
+      // Check validation state on a virgin field
+      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+      assert.deepEqual(vm.getValidationState(), [undefined, undefined])
+      // Check validation state on the dirty field
+      vm.defineDirtyState()
+      assert.strictEqual(vm.getFormValueOf('$dirty'), true)
+      const correctErrorState = ['is-danger', 'Fill out this field!']
+      assert.deepEqual(vm.getValidationState(), correctErrorState)
+    })
+  })
+
+  describe('event handling', function () {
+    it('should change active state of a field', function () {
+      assert.strictEqual(vm.getFormValueOf('$active'), false)
+      vm.toggleActiveState()
+      assert.strictEqual(vm.getFormValueOf('$active'), true)
+    })
+
+    it('should return custom event handler', function () {
+      const args = 'yeah!'
+      assert.equal(vm.callCustomEventHandler('change', args), args)
+    })
+
+    it('should change dirty and active state on blur event', function () {
+      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+      vm.toggleActiveState()
+      assert.strictEqual(vm.getFormValueOf('$active'), true)
+      vm.handleBlurEvent()
+      assert.strictEqual(vm.getFormValueOf('$dirty'), true)
+      assert.strictEqual(vm.getFormValueOf('$active'), false)
+    })
+
+    it('should toggle active state on focus event', function () {
+      assert.strictEqual(vm.getFormValueOf('$active'), false)
+      vm.handleFocusEvent()
+      assert.strictEqual(vm.getFormValueOf('$active'), true)
+    })
+
+    it('should change dirty state on change event', function () {
+      assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+      vm.handleChangeEvent()
+      assert.strictEqual(vm.getFormValueOf('$dirty'), true)
+    })
+  })
 })
 
 describe('WrappedFormlyFieldMixin', function () {
@@ -76,6 +145,12 @@ describe('WrappedFormlyFieldMixin', function () {
   beforeEach(function () {
     vm = mount(prepareComponent(WrappedFormlyFieldMixin), {
       props: props()
+    })
+  })
+
+  describe('props', function () {
+    it('should return default props value', function () {
+      assert.deepEqual(vm.wrappedComponent, {})
     })
   })
 })
