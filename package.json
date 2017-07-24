@@ -1,7 +1,7 @@
 {
   "name": "vue-formly-buefy",
-  "version": "0.0.9",
-  "description": "A plugin for Vue Formly which adds multiple form fields according to Buefy.",
+  "version": "0.1.0",
+  "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",
     "vuejs",
