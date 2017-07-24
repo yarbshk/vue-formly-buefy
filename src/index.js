@@ -3,6 +3,7 @@ import { addTypes, wrapComponent } from './utils'
 import Field from './components/form/field'
 import Input from './components/form/input'
 import Checkbox from './components/form/checkbox'
+import Radio from './components/form/radio'
 import Select from './components/form/select'
 import Switch from './components/form/switch'
 
@@ -12,11 +13,13 @@ const VueFormlyBuefy = {
       // Plain
       Input,
       'checkbox': Checkbox.Checkbox,
-      'checkbox-group': Checkbox.CheckboxGroup,
+      'radio': Radio.Radio,
       Select,
       Switch,
       // Combined
       'input-with-field': wrapComponent(Input, Field.Wrapper),
+      'checkbox-group': Checkbox.CheckboxGroup,
+      'radio-button': Radio.RadioButton,
       'select-with-field': wrapComponent(Select, Field.Wrapper)
     })
   }

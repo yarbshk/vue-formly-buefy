@@ -110,24 +110,24 @@ export default {
       const isActive = !this.getFormValueOf('$active')
       this.$set(this.form[this.field.key], '$active', isActive)
     },
-    callCustomEventHandler (name, args) {
+    callCustomEventHandler (name, ...args) {
       /**
        * Search for implementation of a custom event handler.
        * Call the handler if it exists, in other case ignore.
        */
       this.getToValueOf('events/' + name, () => {})(args)
     },
-    handleBlurEvent (event) {
+    handleBlurEvent (...args) {
       this.defineDirtyState()
-      this.callCustomEventHandler('blur', event)
+      this.callCustomEventHandler('blur', args)
     },
-    handleFocusEvent (event) {
+    handleFocusEvent (...args) {
       this.toggleActiveState()
-      this.callCustomEventHandler('focus', event)
+      this.callCustomEventHandler('focus', args)
     },
-    handleChangeEvent (value) {
+    handleChangeEvent (...args) {
       this.defineDirtyState()
-      this.callCustomEventHandler('change', value)
+      this.callCustomEventHandler('change', args)
     }
   }
 }
