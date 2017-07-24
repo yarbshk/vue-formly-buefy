@@ -5,7 +5,7 @@ services:
     image: node:latest
     command: yarn build
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
     ports:
       - "8080:8080" # Webpack development server
       - "9876:9876" # Karma's port for testing in browsers
