@@ -31,14 +31,14 @@
 
 <script>
   /**
-   * Implements a usual select field (a dropdown list with options)
+   * Implements a select field (dropdown list with options).
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/select}
    */
-  import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
+  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
 
   export default {
-    mixins: [WrappedFormlyFieldMixin],
+    mixins: [BaseFormlyFieldMixin],
     data: () => ({
       templateTypes: {
         PLAIN: 'plain',
@@ -50,6 +50,14 @@
         return this.getFieldValueOf('options', [])
       },
       templateType () {
+        /**
+         * Define a template type for child nodes of a select.
+         * Templates come in two types:
+         * 1) plain - for options
+         * 2) combined - for optgroups
+         * Follow the link below for the usage guide
+         * {@link https://011.vuejs.org/guide/forms.html#Dynamic_Select_Options}
+         */
         if (this.options.length) {
           const obj = this.options[0]
           if ('label' in obj && 'options' in obj) {

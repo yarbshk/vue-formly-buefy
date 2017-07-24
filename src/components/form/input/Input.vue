@@ -9,7 +9,7 @@
 
 <script>
   /**
-   * Implements usual input field of type text (including textarea)
+   * Implements an input or textarea field.
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/field}
    */

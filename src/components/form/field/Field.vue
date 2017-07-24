@@ -17,11 +17,6 @@
 </template>
 
 <script>
-  /**
-   * Implements a wrapper for Input, Select or Autocomplete form types.
-   * This component add additional functionality to foregoing components.
-   * {@link https://buefy.github.io/#/documentation/field}
-   */
   import VfbControl from './Control.vue'
 
   export default {

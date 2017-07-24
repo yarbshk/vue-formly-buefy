@@ -11,9 +11,9 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import WrappedFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
 
   export default {
-    mixins: [WrappedFormlyFieldMixin]
+    mixins: [BaseFormlyFieldMixin]
   }
 </script>

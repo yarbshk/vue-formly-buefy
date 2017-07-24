@@ -10,6 +10,11 @@
 </template>
 
 <script>
+  /**
+   * Implements a wrapper for Input, Select or Autocomplete form types.
+   * This component add additional functionality to foregoing components.
+   * {@link https://buefy.github.io/#/documentation/field}
+   */
   import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
   import Field from './Field.vue'
 
