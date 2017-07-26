@@ -58,6 +58,9 @@ Simple example of creating an input type with a static button (span):
           key: 'email',
           type: 'input-with-field',        // Easy wrapping with Field component,
           templateOptions: {
+            properties: {
+              'placeholder': 'Your email'  // Recommends to use quotes and kebab-case
+            },
             controls: {
               after: [
                 {
@@ -70,9 +73,6 @@ Simple example of creating an input type with a static button (span):
                   }
                 }
               ]
-            },
-            properties: {
-              'placeholder': 'Your email'  // Recommends to use quotes and kebab-case
             }
           }
         }
@@ -93,6 +93,9 @@ The code above will generate the following Buefy markup:
 </b-field>
 ...
 ```
+
+## Status
+The plugin passes the **beta testing** stage now. Follow this project 
 
 ## Issues
 Be free to open new issue if you notice a bug. Let's make web a little bit better together :)

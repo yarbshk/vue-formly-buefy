@@ -1,6 +1,6 @@
 <template>
   <button class="button" v-bind="properties">
-    <span>{{ label }}</span>
+    <span v-text="label"></span>
     <b-icon v-if="icon" :icon="icon"></b-icon>
   </button>
 </template>
