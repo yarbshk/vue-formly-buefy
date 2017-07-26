@@ -16,9 +16,9 @@
 
   export default {
     mixins: [BaseFormlyFieldMixin],
-    computed: {
-      label () {
-        return this.getFieldValueOf('label', '')
+    data () {
+      return {
+        label: this.getToValueOf('label', '')
       }
     }
   }

@@ -22,9 +22,9 @@
 
   export default {
     mixins: [BaseFormlyFieldMixin],
-    computed: {
-      options () {
-        return this.getFieldValueOf('options', [])
+    data () {
+      return {
+        options: this.getFieldValueOf('options', [])
       }
     }
   }

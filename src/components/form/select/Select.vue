@@ -39,16 +39,16 @@
 
   export default {
     mixins: [BaseFormlyFieldMixin],
-    data: () => ({
-      templateTypes: {
-        PLAIN: 'plain',
-        COMBINED: 'combined'
+    data () {
+      return {
+        options: this.getFieldValueOf('options', []),
+        templateTypes: {
+          PLAIN: 'plain',
+          COMBINED: 'combined'
+        }
       }
-    }),
+    },
     computed: {
-      options () {
-        return this.getFieldValueOf('options', [])
-      },
       templateType () {
         /**
          * Define a template type for child nodes of a select.

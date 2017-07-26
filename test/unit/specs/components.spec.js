@@ -18,25 +18,25 @@ const props = () => ({
 function onBlur(vm, ...args) {
   vm.form[vm.field.key].$dirty = false
   vm.toggleActiveState(true)
-  assert.strictEqual(vm.getFormValueOf('$dirty'), false)
-  assert.strictEqual(vm.getFormValueOf('$active'), true)
+  assert.strictEqual(vm._dirty, false)
+  assert.strictEqual(vm._active, true)
   vm.$trigger('blur', args)
-  assert.strictEqual(vm.getFormValueOf('$dirty'), true)
-  assert.strictEqual(vm.getFormValueOf('$active'), false)
+  assert.strictEqual(vm._dirty, true)
+  assert.strictEqual(vm._active, false)
 }
 
 function onFocus(vm, ...args) {
   vm.toggleActiveState(false)
-  assert.strictEqual(vm.getFormValueOf('$active'), false)
+  assert.strictEqual(vm._active, false)
   vm.$trigger('focus', args)
-  assert.strictEqual(vm.getFormValueOf('$active'), true)
+  assert.strictEqual(vm._active, true)
 }
 
 function onChange(vm, ...args) {
   vm.form[vm.field.key].$dirty = false
-  assert.strictEqual(vm.getFormValueOf('$dirty'), false)
+  assert.strictEqual(vm._dirty, false)
   vm.$trigger('change', args)
-  assert.strictEqual(vm.getFormValueOf('$dirty'), true)
+  assert.strictEqual(vm._dirty, true)
 }
 
 describe('Textarea', function () {
@@ -62,12 +62,13 @@ describe('Textarea', function () {
     it('should type several words in a textarea', function () {
       const message = 'Test message'
       vm.$trigger('focus', null)
-      assert.strictEqual(vm.getFormValueOf('$active'), true)
+      assert.strictEqual(vm._active, true)
       vm.model[vm.field.key] = message
+      vm.$trigger('change', null)
       vm.$trigger('blur', null)
-      assert.strictEqual(vm.getFormValueOf('$dirty'), true)
-      assert.strictEqual(vm.getFormValueOf('$active'), false)
-      assert.equal(vm.getModel(), message)
+      assert.strictEqual(vm._dirty, true)
+      assert.strictEqual(vm._active, false)
+      assert.equal(vm._model, message)
     })
   })
 })

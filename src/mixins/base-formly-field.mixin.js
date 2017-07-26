@@ -5,9 +5,23 @@ export default {
     model: Object,
     to: Object
   },
+  data: function () {
+    return {
+      properties: this.getToValueOf('properties', {})
+    }
+  },
   computed: {
-    properties () {
-      return this.getToValueOf('properties', {})
+    _model () {
+      return this.model[this.field.key]
+    },
+    _errors () {
+      return this.form.$errors[this.field.key] || {}
+    },
+    _active () {
+      return this.form[this.field.key].$active
+    },
+    _dirty () {
+      return this.form[this.field.key].$dirty
     }
   },
   created () {
@@ -15,22 +29,22 @@ export default {
      * Onetime initialisation of a field.
      */
     this.$set(this.form, this.field.key, {
-      '$dirty': false,
-      '$active': false
+      '$active': false,
+      '$dirty': false
     })
   },
   methods: {
     // Core access function
-    _getValue (obj, path, defaultVal = undefined) {
+    _getValueOf (obj, path, defaultVal = undefined) {
       /**
        * Gets values from objects and sets defaults by relative path.
        * Used to bind elements from Formly config object to a tag attribute.
        * @example
        * // returns 1
-       * _getValue({a: {b: {c: 1}}}, 'a/b/c')
+       * _getValueOf({a: {b: {c: 1}}}, 'a/b/c')
        * @example
        * // returns null
-       * _getValue({a: {b: {c: 1}}}, 'a/b/x', null)
+       * _getValueOf({a: {b: {c: 1}}}, 'a/b/x', null)
        */
       let value = defaultVal
       path.split('/').some(function (elem, i, arr) {
@@ -44,23 +58,12 @@ export default {
       return value
     },
     // Shortcuts. Quick access to field's props
-    getErrors () {
-      return this._getValue(this.form, '$errors/' + this.field.key, {})
-    },
-    getForm () {
-      return this.form[this.field.key]
-    },
-    getModel () {
-      return this.model[this.field.key]
-    },
-    getFormValueOf (path, defaultVal = undefined) {
-      return this._getValue(this.getForm(), path, defaultVal)
-    },
+    // Note: Provided values are not reactive!
     getFieldValueOf (path, defaultVal = undefined) {
-      return this._getValue(this.field, path, defaultVal)
+      return this._getValueOf(this.field, path, defaultVal)
     },
     getToValueOf (path, defaultVal = undefined) {
-      return this._getValue(this.to, path, defaultVal)
+      return this._getValueOf(this.to, path, defaultVal)
     },
     // Handling errors
     getReadableErrorMessage () {
@@ -70,7 +73,7 @@ export default {
        * therefore it's necessary manually choose the human readable messages.
        */
       let error
-      const errors = this.getErrors()
+      const errors = this._errors
       Object.keys(errors).some(key => {
         if (typeof errors[key] !== 'boolean') {
           error = errors[key]
@@ -85,8 +88,8 @@ export default {
        * It's necessary condition of a Formly form validation rules.
        */
       let type, message
-      if (!this.getFormValueOf('$active') && this.getFormValueOf('$dirty')) {
-        if (Object.keys(this.getErrors()).length) {
+      if (!this._active && this._dirty) {
+        if (Object.keys(this._errors).length) {
           type = 'is-danger'
           message = this.getReadableErrorMessage()
         } else {
@@ -101,17 +104,17 @@ export default {
        * Take virgin of a field by using a blur or change event.
        * It's there only for user reference. Sets it once.
        */
-      if (!this.getFormValueOf('$dirty')) {
+      if (!this.$dirty) {
         this.$set(this.form[this.field.key], '$dirty', true)
       }
     },
-    toggleActiveState (force) {
+    toggleActiveState (forcedState) {
       /**
        * Representation of a focus event.
        */
-      const isActive = typeof force !== 'undefined'
-        ? Boolean(force)
-        : !this.getFormValueOf('$active')
+      const isActive = typeof forcedState === 'undefined'
+        ? !this._active
+        : Boolean(forcedState)
       this.$set(this.form[this.field.key], '$active', isActive)
     },
     callCustomEventHandler (name, ...args) {
