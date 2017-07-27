@@ -135,6 +135,12 @@ export default {
     handleChangeEvent (...args) {
       this.defineDirtyState()
       this.callCustomEventHandler('change', args)
+    },
+    handleInputEvent (...args) {
+      this.callCustomEventHandler('input', args)
+    },
+    handleSelectEvent (...args) {
+      this.callCustomEventHandler('select', args)
     }
   }
 }

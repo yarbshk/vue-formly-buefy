@@ -1,5 +1,6 @@
 import { addTypes, wrapComponent } from './utils'
 
+import Autocomplete from './components/form/autocomplete'
 import Field from './components/form/field'
 import Input from './components/form/input'
 import Checkbox from './components/form/checkbox'
@@ -11,12 +12,14 @@ const VueFormlyBuefy = {
   install (Vue, options) {
     addTypes(Vue.$formly, {
       // Plain
+      Autocomplete,
       Input,
       'checkbox': Checkbox.Checkbox,
       'radio': Radio.Radio,
       Select,
       Switch,
       // Combined
+      'autocomplete-with-field': wrapComponent(Autocomplete, Field.Wrapper),
       'input-with-field': wrapComponent(Input, Field.Wrapper),
       'checkbox-group': Checkbox.CheckboxGroup,
       'radio-button': Radio.RadioButton,
