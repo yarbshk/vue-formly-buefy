@@ -62,3 +62,10 @@ typings/
 
 # Project source files
 /assets/
+
+# Ignore Start project
+start/
+dist/app.bundle.js
+dist/app.bundle.css
+index.html
+webpack.start.config.js

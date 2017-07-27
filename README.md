@@ -56,23 +56,25 @@ Simple example of creating an input type with a static button (span):
       fields: [
         {
           key: 'email',
-          type: 'input-with-field',        // Easy wrapping with Field component,
+          type: 'input-with-field',         // Easy wrapping with a Field component
           templateOptions: {
-            properties: {
-              'placeholder': 'Your email'  // Recommends to use quotes and kebab-case
+            properties: {                   
+              'placeholder': 'Your email'   // Recommends to use quotes and kebab-case
             },
-            controls: {
-              after: [
-                {
-                  type: Span,              // Use the Span helper as a field control
-                  options: {               // Config object for the Span helper
-                    label: '@gmail.com',
-                    properties: {
-                      'class': 'button is-static'
+            wrapper: {                      // Configuration object of the Field component
+              controls: {
+                after: [
+                  {
+                    type: Span,             // Use the Span helper as a field control
+                    options: {              // Configuration object of the field control
+                      label: '@gmail.com',
+                      properties: {
+                        'class': 'button is-static'
+                      }
                     }
                   }
-                }
-              ]
+                ]
+              }
             }
           }
         }
@@ -95,7 +97,7 @@ The code above will generate the following Buefy markup:
 ```
 
 ## Status
-The plugin passes the **beta testing** stage now. Follow this project 
+The plugin passes the **beta testing** stage now.
 
 ## Issues
 Be free to open new issue if you notice a bug. Let's make web a little bit better together :)

@@ -70,9 +70,14 @@ export default {
       /**
        * Get a message from a current field's errors stack.
        */
+      let error
+      let validators = this.getFieldValueOf('validators', {})
       const errors = Object.keys(this._errors)
-      let error, validators = this.getFieldValueOf('validators', {})
-      if (validators[name]) validators = {name: validators[name]}
+      if (validators[name]) {
+        validators = {
+          name: validators[name]
+        }
+      }
       Object.keys(validators).some(key => {
         if (errors.indexOf(key) !== -1 && validators[key].message) {
           error = validators[key].message

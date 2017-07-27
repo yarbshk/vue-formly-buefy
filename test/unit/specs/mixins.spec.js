@@ -8,7 +8,7 @@ const props = () => ({
   form: {
     $errors: {
       name: {
-        required: 'Fill out this field!'
+        boom: true
       }
     },
     $valid: false,
@@ -23,7 +23,12 @@ const props = () => ({
   field: {
     key: 'name',
     type: 'input',
-    required: true
+    validators: {
+      boom: {
+        expression: 'model[field.key].length > 5',
+        message: 'Fill out this field!'
+      }
+    }
   },
   to: {
     events: {
@@ -85,7 +90,7 @@ describe('BaseFormlyFieldMixin', function () {
 
   describe('errors handling', function () {
     it('should return readable error message', function () {
-      assert.equal(vm.getReadableErrorMessage(), 'Fill out this field!')
+      assert.equal(vm.getErrorMessage(), 'Fill out this field!')
     })
 
     it('should return correct validation state', function () {
