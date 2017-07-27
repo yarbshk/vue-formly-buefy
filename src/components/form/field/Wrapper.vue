@@ -1,6 +1,6 @@
 <template>
-  <vfb-field :controls="controls" :properties="fieldProperties">
-    <component v-bind:is="wrappedComponent"
+  <vfb-field :controls="controls" :properties="extendedProperties">
+    <component v-bind:is="extendedWrapperComponent"
                :form.sync="form"
                :model="model"
                :field="field"
@@ -16,6 +16,7 @@
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
+  import FieldWrapperMixin from 'src/mixins/field-wrapper.mixin'
   import Field from './Field.vue'
 
   export default {
@@ -25,15 +26,31 @@
     },
     data () {
       return {
-        controls: this.getToValueOf('field/controls', {}),
-        properties: this.getToValueOf('field/properties', {})
+        controls: this.getToValueOf('wrapper/controls', {}),
+        properties: this.getToValueOf('wrapper/properties', {})
       }
     },
     computed: {
-      fieldProperties () {
-        [this.properties['type'],
-          this.properties['message']] = this.getValidationState()
-        return this.properties
+      extendedProperties () {
+        let [type, message] = this.getValidationState()
+        return Object.assign({}, this.properties, {
+          type: type,
+          message: message
+        })
+      },
+      extendedWrapperComponent () {
+        /**
+         * Forced to extend a wrapped component to mask it under the Field.
+         * Input and Select components check parent $data option
+         * for extending own functionality. The structure of the wrapper
+         * doesn't allow communication between parent and children directly
+         * (because contain intermediate component), therefore it's
+         * necessary to transfer parent options for children manually.
+         */
+        return {
+          extends: this.wrappedComponent,
+          mixins: [FieldWrapperMixin]
+        }
       }
     }
   }

@@ -37,8 +37,8 @@ export default {
     // Core access function
     _getValueOf (obj, path, defaultVal = undefined) {
       /**
-       * Gets values from objects and sets defaults by relative path.
-       * Used to bind elements from Formly config object to a tag attribute.
+       * Gets value from object or its default value by relative path.
+       * Used to get cached value of Formly field props (field, to).
        * @example
        * // returns 1
        * _getValueOf({a: {b: {c: 1}}}, 'a/b/c')
@@ -66,17 +66,16 @@ export default {
       return this._getValueOf(this.to, path, defaultVal)
     },
     // Handling errors
-    getReadableErrorMessage () {
+    getErrorMessage (name) {
       /**
-       * Get first readable message from a current field's errors stack.
-       * Formly provide boolean errors when error message doesn't set,
-       * therefore it's necessary manually choose the human readable messages.
+       * Get a message from a current field's errors stack.
        */
-      let error
-      const errors = this._errors
-      Object.keys(errors).some(key => {
-        if (typeof errors[key] !== 'boolean') {
-          error = errors[key]
+      const errors = Object.keys(this._errors)
+      let error, validators = this.getFieldValueOf('validators', {})
+      if (validators[name]) validators = {name: validators[name]}
+      Object.keys(validators).some(key => {
+        if (errors.indexOf(key) !== -1 && validators[key].message) {
+          error = validators[key].message
           return true
         }
       })
@@ -91,7 +90,7 @@ export default {
       if (!this._active && this._dirty) {
         if (Object.keys(this._errors).length) {
           type = 'is-danger'
-          message = this.getReadableErrorMessage()
+          message = this.getErrorMessage()
         } else {
           type = 'is-success'
         }
@@ -110,7 +109,7 @@ export default {
     },
     toggleActiveState (forcedState) {
       /**
-       * Representation of a focus event.
+       * Change an active flag on focus event.
        */
       const isActive = typeof forcedState === 'undefined'
         ? !this._active
