@@ -15,11 +15,11 @@
    * This component add additional functionality to foregoing components.
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
+  import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
   import Field from './Field.vue'
 
   export default {
-    mixins: [WrappedFormlyFieldMixin],
+    mixins: [BaseFieldWrapperMixin],
     components: {
       'vfb-field': Field
     },

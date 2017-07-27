@@ -1,4 +1,4 @@
-import BaseFormlyFieldMixin from './base-formly-field.mixin'
+import BaseFormlyFieldMixin from './base-field.mixin'
 
 export default {
   mixins: [BaseFormlyFieldMixin],

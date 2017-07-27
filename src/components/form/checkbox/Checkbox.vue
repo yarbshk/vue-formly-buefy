@@ -12,10 +12,10 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/checkbox}
    */
-  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import BaseFieldMixin from 'src/mixins/base-field.mixin'
 
   export default {
-    mixins: [BaseFormlyFieldMixin],
+    mixins: [BaseFieldMixin],
     data () {
       return {
         label: this.getToValueOf('label', '')

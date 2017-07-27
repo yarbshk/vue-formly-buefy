@@ -11,9 +11,9 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import BaseFieldMixin from 'src/mixins/base-field.mixin'
 
   export default {
-    mixins: [BaseFormlyFieldMixin]
+    mixins: [BaseFieldMixin]
   }
 </script>

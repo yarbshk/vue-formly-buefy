@@ -1,8 +1,8 @@
 import assert from 'assert'
 import { mount } from 'vuenit'
 
-import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
-import WrappedFormlyFieldMixin from 'src/mixins/wrapped-formly-field.mixin'
+import BaseFieldMixin from 'src/mixins/base-field.mixin'
+import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
 
 const props = () => ({
   form: {
@@ -50,7 +50,7 @@ describe('BaseFormlyFieldMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(BaseFormlyFieldMixin), {
+    vm = mount(prepareComponent(BaseFieldMixin), {
       props: props()
     })
   })
@@ -135,11 +135,11 @@ describe('BaseFormlyFieldMixin', function () {
   })
 })
 
-describe('WrappedFormlyFieldMixin', function () {
+describe('BaseFieldWrapperMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(WrappedFormlyFieldMixin), {
+    vm = mount(prepareComponent(BaseFieldWrapperMixin), {
       props: props()
     })
   })

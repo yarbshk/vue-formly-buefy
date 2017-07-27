@@ -18,10 +18,10 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/radio}
    */
-  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import BaseFieldMixin from 'src/mixins/base-field.mixin'
 
   export default {
-    mixins: [BaseFormlyFieldMixin],
+    mixins: [BaseFieldMixin],
     data () {
       return {
         options: this.getFieldValueOf('options', [])
