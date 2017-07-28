@@ -32,6 +32,10 @@
     },
     methods: {
       defaultFilter (option) {
+        if (typeof option === 'object') {
+          const path = this.getToValueOf('properties/field', '')
+          path.split('.').forEach(cell => option = option[cell])
+        }
         return option
           .toString()
           .toLowerCase()
