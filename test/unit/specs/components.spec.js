@@ -48,7 +48,7 @@ describe('Select', function () {
   beforeEach(function () {
     vm = mount(Select, {
       props: Object.assign({}, props(), {
-        field: {
+        to: {
           options: [
             { label: 'A', options: ['a', 'b']},
             { label: 'B', options: ['c', 'd']}

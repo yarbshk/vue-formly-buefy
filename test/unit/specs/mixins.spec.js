@@ -3,6 +3,7 @@ import { mount } from 'vuenit'
 
 import BaseFieldMixin from 'src/mixins/base-field.mixin'
 import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
+import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
 const props = () => ({
   form: {
@@ -152,6 +153,27 @@ describe('BaseFieldWrapperMixin', function () {
   describe('props', function () {
     it('should return default props value', function () {
       assert.deepEqual(vm.wrappedComponent, {})
+    })
+  })
+})
+
+describe('SelectricFieldMixin', function () {
+  let vm = null
+
+  beforeEach(function () {
+    vm = mount(prepareComponent(SelectricFieldMixin), {
+      props: props()
+    })
+  })
+
+  describe('watch', function () {
+    it('should return correct option value', function () {
+      assert.equal(vm.getOptionAttr('foo'), 'foo')
+      let option = {text: 'foo'}
+      assert.equal(vm.getOptionAttr(option, 'text'), 'foo')
+      assert.equal(vm.getOptionAttr(option, 'value', option.text), 'foo')
+      option.value = 'bar'
+      assert.equal(vm.getOptionAttr(option, 'value'), 'bar')
     })
   })
 })

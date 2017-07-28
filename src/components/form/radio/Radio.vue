@@ -4,9 +4,9 @@
                  @change="handleChangeEvent">
     <b-radio v-for="(option, index) in options"
              v-bind:key="index"
-             v-text="option.text"
-             :value="option.value"
+             :value="getOptionAttr(option, 'value', option.text)"
              v-bind="option.properties">
+      {{ getOptionAttr(option, 'text') }}
     </b-radio>
   </b-radio-group>
 </template>
@@ -17,21 +17,13 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/radio}
    */
-  import BaseFieldMixin from 'src/mixins/base-field.mixin'
-  import { wrapElement } from 'src/utils'
+  import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
-    mixins: [BaseFieldMixin],
+    mixins: [SelectricFieldMixin],
     data () {
       return {
-        options: this.getFieldValueOf('options', [])
-      }
-    },
-    mounted () {
-      // Wrap child nodes of a radio group when wrapper exists
-      const wrapper = this.getFieldValueOf('childWrapper')
-      if (typeof wrapper === 'object') {
-        this.$el.childNodes.forEach(node => wrapElement(node, wrapper))
+        canWrapChildren: true
       }
     }
   }

@@ -12,17 +12,17 @@
                   :label="optgroup.label">
           <option v-for="(option, j) in optgroup.options"
                   v-bind:key="j"
-                  v-text="typeof option == 'object' ? option.text : option"
-                  :value="typeof option == 'object' ? option.value : option">
+                  :value="getOptionAttr(option, 'value', option.text)">
+            {{ getOptionAttr(option, 'text') }}
           </option>
         </optgroup>
       </template>
       <!-- Render an options select -->
       <template v-else>
-        <option v-for="(option, i) in options"
-                v-bind:key="i"
-                v-text="typeof option == 'object' ? option.text : option"
-                :value="typeof option == 'object' ? option.value : option">
+        <option v-for="(option, index) in options"
+                v-bind:key="index"
+                :value="getOptionAttr(option, 'value', option.text)">
+          {{ getOptionAttr(option, 'text') }}
         </option>
       </template>
     </template>
@@ -35,13 +35,12 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/select}
    */
-  import BaseFieldMixin from 'src/mixins/base-field.mixin'
+  import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
-    mixins: [BaseFieldMixin],
+    mixins: [SelectricFieldMixin],
     data () {
       return {
-        options: this.getFieldValueOf('options', []),
         templateTypes: {
           PLAIN: 'plain',
           COMBINED: 'combined'

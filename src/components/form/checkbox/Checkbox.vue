@@ -1,8 +1,8 @@
 <template>
   <b-checkbox v-model="model[field.key]"
-              v-text="label"
               v-bind="properties"
               @change="handleChangeEvent">
+    {{ label }}
   </b-checkbox>
 </template>
 
@@ -18,7 +18,7 @@
     mixins: [BaseFieldMixin],
     data () {
       return {
-        label: this.getToValueOf('label', '')
+        label: this.getToValueOf('label', this._model)
       }
     }
   }

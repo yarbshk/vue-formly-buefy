@@ -2,6 +2,7 @@
   <b-switch v-bind="properties"
             v-model="model[field.key]"
             @change="handleChangeEvent">
+    {{ label }}
   </b-switch>
 </template>
 
@@ -14,6 +15,11 @@
   import BaseFieldMixin from 'src/mixins/base-field.mixin'
 
   export default {
-    mixins: [BaseFieldMixin]
+    mixins: [BaseFieldMixin],
+    data () {
+      return {
+        label: this.getToValueOf('label', this._model)
+      }
+    }
   }
 </script>
