@@ -95,6 +95,7 @@ The code above will generate the following Buefy markup:
 </b-field>
 ...
 ```
+You may find more examples on the [vue-formly-buefy-examples repo](https://github.com/yarbshk/vue-formly-buefy-examples/).
 
 ## Status
 The plugin passes the **beta testing** stage now.

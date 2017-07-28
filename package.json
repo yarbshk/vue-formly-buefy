@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",
@@ -18,8 +18,6 @@
   "main": "dist/vue-formly-buefy.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start",
-    "watch": "./node_modules/.bin/webpack --progress --watch",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack.start.config.js -d -w --hot --host 0.0.0.0",
     "build": "./node_modules/.bin/webpack"
   },
   "repository": {
@@ -63,7 +61,6 @@
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.1",
     "vuenit": "^1.0.0",
-    "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack": "^3.3.0"
   }
 }
