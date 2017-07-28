@@ -93,11 +93,12 @@ export default {
        */
       let type, message
       if (!this._active && this._dirty) {
-        if (Object.keys(this._errors).length) {
+        if (Object.values(this._errors).indexOf(true) !== -1) {
           type = 'is-danger'
           message = this.getErrorMessage()
         } else {
           type = 'is-success'
+          message = this.getToValueOf('wrapper/properties/message')
         }
       }
       return [type, message]
