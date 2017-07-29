@@ -31,10 +31,7 @@ describe('Wrappers', function () {
       let a = document.createElement('span'), wrapper
       a.setAttribute('id', 'a')
       document.body.appendChild(a)
-      wrapElement(document.getElementById('a'), {
-        tag: 'div',
-        properties: { 'id': 'b' }
-      })
+      wrapElement(document.getElementById('a'), '<div id="b"></div>')
       wrapper = document.getElementById('b')
       assert.strictEqual(wrapper.childNodes[0].id, 'a')
     })

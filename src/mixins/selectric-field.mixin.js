@@ -14,7 +14,7 @@ export default {
     if (this.canWrapChildren) {
       // Wrap child nodes of a selectric when wrapper exists
       const wrapper = this.getToValueOf('childWrapper')
-      if (typeof wrapper === 'object') {
+      if (typeof wrapper === 'string' && wrapper) {
         this.$el.childNodes.forEach(node => wrapElement(node, wrapper))
       }
     }

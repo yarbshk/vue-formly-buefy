@@ -21,11 +21,9 @@ export const wrapComponent = function (component, wrapper) {
 }
 
 export const wrapElement = function (element, wrapper) {
-  const wrapperEl = document.createElement(wrapper.tag)
-  Object.keys(wrapper.properties).forEach(key => {
-    wrapperEl.setAttribute(key, wrapper.properties[key])
-  })
-  wrapperEl.appendChild(element.cloneNode(true))
+  const template = document.createElement('div')
+  template.innerHTML = wrapper
+  const wrapperEl = template.firstChild
   element.parentNode.insertBefore(wrapperEl, element)
-  element.remove()
+  wrapperEl.appendChild(element)
 }
