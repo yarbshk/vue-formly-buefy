@@ -18,7 +18,7 @@
     mixins: [BaseFieldMixin],
     data () {
       return {
-        label: this.getToValueOf('label', this._model)
+        label: this.getToValueOf('label', this._model.toString())
       }
     }
   }
