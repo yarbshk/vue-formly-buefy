@@ -1,6 +1,6 @@
 <template>
   <vfb-field :controls="wrapperControls" :properties="extendedWrapperProperties">
-    <component v-bind:is="extendedWrapperComponent"
+    <component v-bind:is="extendedWrappedComponent"
                :form.sync="form"
                :model="model"
                :field="field"
@@ -38,13 +38,13 @@
           message: message
         })
       },
-      extendedWrapperComponent () {
+      extendedWrappedComponent () {
         /**
          * Forced to extend a wrapped component to mask it under the Field.
          * Input and Select components check parent $data option
          * for extending own functionality. The structure of the wrapper
          * doesn't allow communication between parent and children directly
-         * (because contain intermediate component), therefore it's
+         * (because contains intermediate component), therefore it's
          * necessary to transfer parent options for children manually.
          */
         return {

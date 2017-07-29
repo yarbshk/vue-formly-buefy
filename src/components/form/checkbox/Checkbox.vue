@@ -16,9 +16,9 @@
 
   export default {
     mixins: [BaseFieldMixin],
-    data () {
-      return {
-        label: this.getToValueOf('label', this._model.toString())
+    computed: {
+      label () {
+        return this.getToValueOf('label', this._model.toString())
       }
     }
   }
