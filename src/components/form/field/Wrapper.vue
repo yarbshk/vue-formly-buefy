@@ -1,5 +1,5 @@
 <template>
-  <vfb-field :controls="controls" :properties="extendedProperties">
+  <vfb-field :controls="wrapperControls" :properties="extendedWrapperProperties">
     <component v-bind:is="extendedWrapperComponent"
                :form.sync="form"
                :model="model"
@@ -26,14 +26,14 @@
     },
     data () {
       return {
-        controls: this.getToValueOf('wrapper/controls', {}),
-        properties: this.getToValueOf('wrapper/properties', {})
+        wrapperControls: this.getToValueOf('wrapper/controls', {}),
+        wrapperProperties: this.getToValueOf('wrapper/properties', {})
       }
     },
     computed: {
-      extendedProperties () {
+      extendedWrapperProperties () {
         let [type, message] = this.getValidationState()
-        return Object.assign({}, this.properties, {
+        return Object.assign({}, this.wrapperProperties, {
           type: type,
           message: message
         })
