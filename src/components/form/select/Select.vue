@@ -1,6 +1,6 @@
 <template>
   <b-select v-bind="properties"
-            v-model="model[field.key]"
+            v-model="modelValue"
             @blur="handleBlurEvent"
             @focus="handleFocusEvent"
             @change="handleChangeEvent">
@@ -41,6 +41,9 @@
     mixins: [SelectricFieldMixin],
     data () {
       return {
+        // It's necessary to set an initial value to null when no option selected,
+        // because placeholder is not visible when value different from null
+        modelValue: this._model || null,
         templateTypes: {
           PLAIN: 'plain',
           COMBINED: 'combined'
@@ -65,6 +68,14 @@
             return this.templateTypes.PLAIN
           }
         }
+      }
+    },
+    watch: {
+      /**
+       * Manually set model value when stub value has been changed.
+       */
+      modelValue (value) {
+        this.$set(this.model, this.field.key, value)
       }
     }
   }
