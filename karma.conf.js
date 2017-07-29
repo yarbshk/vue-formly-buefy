@@ -27,7 +27,7 @@ module.exports = function(config) {
 
     plugins: [
       // Launchers
-      'karma-opera-launcher',
+      'karma-chrome-launcher',
 
       // Test Libraries
       'karma-mocha',
@@ -78,7 +78,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Opera'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
