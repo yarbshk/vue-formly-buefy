@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "0.2.0",
+  "version": "0.2.4",
   "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",

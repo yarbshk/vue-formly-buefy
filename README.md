@@ -95,13 +95,13 @@ The code above will generate the following Buefy markup:
 </b-field>
 ...
 ```
-You may find more examples on the [vue-formly-buefy-examples repo](https://github.com/yarbshk/vue-formly-buefy-examples/).
+You can find [more examples here](https://github.com/yarbshk/vue-formly-buefy-examples/).
 
 ## Status
-The plugin passes the **beta testing** stage now.
+The plugin passed the beta testing stage and now available for use in the **production** environment.
 
 ## Issues
-Be free to open new issue if you notice a bug. Let's make web a little bit better together :)
+Be free to open an issue if you notice a bug. Let's make web a little bit better together :)
 
 ## Copyright and License
 Copyright (c) 2017 Yuriy Rabeshko. Code released under the MIT license.
