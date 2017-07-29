@@ -9,7 +9,7 @@ const props = () => ({
   form: {
     $errors: {
       name: {
-        boom: true
+        boom: 'Fill out this field!'
       }
     },
     $valid: false,

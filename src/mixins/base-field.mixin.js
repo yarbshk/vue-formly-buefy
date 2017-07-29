@@ -68,23 +68,15 @@ export default {
     // Handling errors
     getErrorMessage (name) {
       /**
-       * Get a message from a current field's errors stack.
+       * Get first readable message from a current field's errors stack.
+       * Formly provide boolean errors when error message doesn't set,
+       * therefore it's necessary manually choose the human readable messages.
        */
-      let error
-      let validators = this.getFieldValueOf('validators', {})
-      const errors = Object.keys(this._errors)
-      if (validators[name]) {
-        validators = {
-          name: validators[name]
-        }
-      }
-      Object.keys(validators).some(key => {
-        if (errors.indexOf(key) !== -1 && validators[key].message) {
-          error = validators[key].message
-          return true
-        }
-      })
-      return error
+      const errors = this._errors
+      const errorMessages = Object
+        .values(errors[name] ? { x: errors[name] } : errors)
+        .filter(x => typeof x === 'string' && x)
+      if (errorMessages.length) return errorMessages[0]
     },
     getValidationState () {
       /**
@@ -93,7 +85,7 @@ export default {
        */
       let type, message
       if (!this._active && this._dirty) {
-        if (Object.values(this._errors).indexOf(true) !== -1) {
+        if (Object.values(this._errors).filter(x => x).length) {
           type = 'is-danger'
           message = this.getErrorMessage()
         } else {

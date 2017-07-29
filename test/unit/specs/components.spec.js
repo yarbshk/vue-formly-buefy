@@ -36,8 +36,8 @@ describe('Field.Wrapper', function () {
 
   describe('computed', function () {
     it('should insert validation state into field properties', function () {
-      assert.strictEqual('type' in vm.extendedProperties, true)
-      assert.strictEqual('message' in vm.extendedProperties, true)
+      assert.strictEqual('type' in vm.extendedWrapperProperties, true)
+      assert.strictEqual('message' in vm.extendedWrapperProperties, true)
     })
   })
 })
