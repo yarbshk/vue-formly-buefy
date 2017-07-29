@@ -1,5 +1,5 @@
 /**
- * vue-formly-buefy v0.2.0
+ * vue-formly-buefy v0.2.4
  * https://github.com/yarbshk/vue-formly-buefy.git
  * Released under the MIT License.
  */
