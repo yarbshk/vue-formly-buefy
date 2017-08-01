@@ -12,7 +12,7 @@ Depends on the following plugins:
 ## Instalation
 First of all install necessary dependencies (see above) and **vue-formly-buefy** itself:
 ```bash
-npm i vue-formly-buefy
+$ yarn add vue-formly-buefy
 ```
 After, integrate the plugin with your project:
 ```javascript
@@ -98,7 +98,7 @@ The code above will generate the following Buefy markup:
 You can find [more examples here](https://github.com/yarbshk/vue-formly-buefy-examples/).
 
 ## Status
-The plugin passed the beta testing stage and now available for use in the **production** environment.
+The plugin passed the beta testing stage and now available for use in the **production** environment. I'll probably add more functionality later. This is what I need right now.
 
 ## Issues
 Be free to open an issue if you notice a bug. Let's make web a little bit better together :)

@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",
@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/yarbshk/vue-formly-buefy.git/issues"
   },
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
   "main": "dist/vue-formly-buefy.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start",
