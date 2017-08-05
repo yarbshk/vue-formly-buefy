@@ -1,6 +1,6 @@
 # vue-formly-buefy
 Vue.js plugin that covers the [Buefy](https://buefy.github.io) form fields for [Formly](https://github.com/formly-js/vue-formly). Allows you to combine simplicity of Formly form builder, lightness of Buefy form components and impeccability of [Bulma](http://bulma.io/) design.
-- **Fully-featured.** All Buefy form components are covered (**Input**, **Select**, **Autocomplete**, **Checkbox**, **Radio** and **Switch**). Create form elements of all native input types + textarea.
+- **Fully-featured.** All Buefy form components are covered (**Input**, **Select**, **Autocomplete**, **Checkbox**, **Radio** and **Switch**). Create form elements of all native `input` types + `textarea`.
 - **Well-judged.** Wrapper elements now accessible (**Field**). Wrap Input, Select and Autocomplete form components to increase its functionality (`.controls` elements, validation state indicator, addons available).
 - **Straightforward.** Simple is better than complex.
 
@@ -50,38 +50,40 @@ Simple example of creating an input type with a static button (span):
 <script>
   export default {
     // Set initial values for Formly form
-    data: () => ({
-      form: {},
-      model: {
-        email: ''
-      },
-      fields: [
-        {
-          key: 'email',
-          type: 'input-with-field',         // Easy wrapping with a field wrapper
-          templateOptions: {
-            properties: {                   
-              'placeholder': 'Your email'   // It's recommended to use quotes and kebab-case
-            },
-            wrapper: {                      // Configuration object of the field wrapper
-              controls: {
-                after: [
-                  {                         // Use the Span helper as a field control
-                    type: this.$formlyBuefy.plainControls.Span,
-                    options: {              // Configuration object of the field control
-                      label: '@gmail.com',
-                      properties: {
-                        'class': 'button is-static'
+    data () {
+      return {
+        form: {},
+        model: {
+          email: ''
+        },
+        fields: [
+          {
+            key: 'email',
+            type: 'input-with-field',         // Easy wrapping with a field wrapper
+            templateOptions: {
+              properties: {                   
+                'placeholder': 'Your email'   // It's recommended to use quotes and kebab-case
+              },
+              wrapper: {                      // Configuration object of the field wrapper
+                controls: {
+                  after: [
+                    {                         // Use the Span helper as a field control
+                      type: this.$formlyBuefy.plainControls.Span,
+                      options: {              // Configuration object of the field control
+                        label: '@gmail.com',
+                        properties: {
+                          'class': 'button is-static'
+                        }
                       }
                     }
-                  }
-                ]
+                  ]
+                }
               }
             }
           }
-        }
-      ]
-    })
+        ]
+      }
+    }
   }
 </script>
 ```
@@ -103,9 +105,6 @@ You can find [more examples here](https://github.com/yarbshk/vue-formly-buefy-ex
 The plugin passed the beta testing stage and now available for using in the **production** environment.
 
 I'll probably add more functionality later. This is what I need right now.
-
-## Issues
-Be free to open an issue if you notice a bug. Let's make web a little bit better together :)
 
 ## Copyright and License
 Copyright (c) 2017 Yuriy Rabeshko. Code released under the MIT license.
