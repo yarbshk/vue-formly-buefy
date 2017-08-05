@@ -1,7 +1,7 @@
 <template>
-  <p class="control">
+  <div class="control">
     <component v-bind:is="type" v-bind="options"></component>
-  </p>
+  </div>
 </template>
 
 <script>
