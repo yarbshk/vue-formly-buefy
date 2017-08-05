@@ -44,7 +44,7 @@ const props = () => ({
 })
 
 function prepareComponent (component) {
-  // Tested mixins are not sterling vue components 
+  // Tested mixins are not sterling vue components
   // therefore it's necessary complement a mixin
   // by fake render function to be able to mount one as a component
   return Object.assign(component, {
@@ -92,17 +92,6 @@ describe('BaseFormlyFieldMixin', function () {
   describe('errors handling', function () {
     it('should return readable error message', function () {
       assert.equal(vm.getErrorMessage(), 'Fill out this field!')
-    })
-
-    it('should return correct validation state', function () {
-      // Check validation state on a virgin field
-      assert.strictEqual(vm._dirty, false)
-      assert.deepEqual(vm.getValidationState(), [undefined, undefined])
-      // Check validation state on the dirty field
-      vm.defineDirtyState()
-      assert.strictEqual(vm._dirty, true)
-      const correctErrorState = ['is-danger', 'Fill out this field!']
-      assert.deepEqual(vm.getValidationState(), correctErrorState)
     })
   })
 
@@ -161,7 +150,11 @@ describe('SelectricFieldMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(SelectricFieldMixin), {
+    const selectricFieldMixin = {
+      extends: BaseFormlyFieldMixin,
+      mixins: [SelectricFieldMixin]
+    }
+    vm = mount(prepareComponent(selectricFieldMixin), {
       props: props()
     })
   })

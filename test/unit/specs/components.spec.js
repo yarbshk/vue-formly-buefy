@@ -23,7 +23,32 @@ describe('Field.Wrapper', function () {
   beforeEach(function () {
     vm = mount(Field.Wrapper, {
       props: Object.assign({}, props(), {
-        wrappedComponent: Input
+        wrappedComponent: Input,
+        form: {
+          $errors: {
+            name: {
+              boom: 'Fill out this field!'
+            }
+          },
+          $valid: false,
+          name: {
+            $dirty: false,
+            $active: false
+          }
+        },
+        model: {
+          name: 'John'
+        },
+        field: {
+          key: 'name',
+          type: 'input-with-field',
+          validators: {
+            boom: {
+              expression: 'model[field.key].length > 5',
+              message: 'Fill out this field!'
+            }
+          }
+        }
       })
     })
   })
@@ -36,8 +61,21 @@ describe('Field.Wrapper', function () {
 
   describe('computed', function () {
     it('should insert validation state into field properties', function () {
-      assert.strictEqual('type' in vm.extendedWrapperProperties, true)
-      assert.strictEqual('message' in vm.extendedWrapperProperties, true)
+      assert.strictEqual('type' in vm.extendedProperties, true)
+      assert.strictEqual('message' in vm.extendedProperties, true)
+    })
+  })
+
+  describe('getValidationState()', function () {
+    it('should return correct validation state', function () {
+      // Check validation state on a virgin field
+      assert.strictEqual(vm._dirty, false)
+      assert.deepEqual(vm.getValidationState(), [undefined, undefined])
+      // Check validation state on the dirty field
+      vm.form[vm.field.key].$dirty = true
+      assert.strictEqual(vm._dirty, true)
+      const correctErrorState = ['is-danger', 'Fill out this field!']
+      assert.deepEqual(vm.getValidationState(), correctErrorState)
     })
   })
 })

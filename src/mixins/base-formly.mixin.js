@@ -10,13 +10,7 @@ export default {
       return this.model[this.field.key]
     },
     _errors () {
-      return this.form.$errors[this.field.key] || {}
-    },
-    _active () {
-      return this.form[this.field.key].$active
-    },
-    _dirty () {
-      return this.form[this.field.key].$dirty
+      return this.form.$errors[this.field.key]
     }
   },
   methods: {
@@ -35,7 +29,8 @@ export default {
       let value = defaultVal
       path.split('/').some(function (elem, i, arr) {
         if (!obj.hasOwnProperty(elem)) return true
-        if (++i === arr.length) value = obj[elem] else obj = obj[elem]
+        if (++i === arr.length) value = obj[elem]
+        else obj = obj[elem]
       })
       return value
     },

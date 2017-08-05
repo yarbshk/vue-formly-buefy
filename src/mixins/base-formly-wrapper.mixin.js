@@ -8,5 +8,13 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  computed: {
+    _active () {
+      return Object(this.form[this.field.key]).$active
+    },
+    _dirty () {
+      return Object(this.form[this.field.key]).$dirty
+    }
   }
 }

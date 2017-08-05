@@ -2,9 +2,17 @@ import BaseFormlyMixin from './base-formly.mixin'
 
 export default {
   mixins: [BaseFormlyMixin],
-  data: function () {
+  data () {
     return {
       properties: this.getToValueOf('properties', {})
+    }
+  },
+  computed: {
+    _active () {
+      return this.form[this.field.key].$active
+    },
+    _dirty () {
+      return this.form[this.field.key].$dirty
     }
   },
   /**
