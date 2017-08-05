@@ -7,6 +7,7 @@
 
 <script>
   export default {
+    name: 'vfbButton',
     props: {
       label: String,
       icon: {

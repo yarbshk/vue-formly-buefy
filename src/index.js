@@ -8,6 +8,16 @@ import Radio from './components/form/radio'
 import Select from './components/form/select'
 import Switch from './components/form/switch'
 
+import Button from './components/general/button'
+import Span from './components/general/span'
+
+const pluginInstance = {
+  plainControls: {
+    Button,
+    Span
+  }
+}
+
 const VueFormlyBuefy = {
   install (Vue, options) {
     addTypes(Vue.$formly, {
@@ -25,11 +35,13 @@ const VueFormlyBuefy = {
       'radio-button': Radio.RadioButton,
       'select-with-field': wrapComponent(Select, Field.Wrapper)
     })
+    Vue.prototype.$formlyBuefy = pluginInstance
   }
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(VueFormlyBuefy)
+  window.Vue.prototype.$formlyBuefy = pluginInstance
 }
 
 export default VueFormlyBuefy

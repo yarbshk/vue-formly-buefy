@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    name: 'vfbSpan',
     props: {
       label: {
         type: String,

@@ -20,6 +20,7 @@
   import Field from './Field.vue'
 
   export default {
+    name: 'vfbFieldWrapper',
     mixins: [BaseFormlyWrapperMixin],
     components: {
       'vfb-field': Field
@@ -49,6 +50,7 @@
       extendedWrappedComponent () {
         return {
           extends: this.wrappedComponent,
+          name: 'vfbWrappedField',
           mixins: [WrappedFieldMixin]
         }
       }
