@@ -1,8 +1,6 @@
-import BaseFieldMixin from 'src/mixins/base-field.mixin'
 import { wrapElement } from 'src/utils'
 
 export default {
-  mixins: [BaseFieldMixin],
   data () {
     return {
       // Determines whether a component can wrap children
@@ -19,10 +17,10 @@ export default {
       }
     }
   },
+  /**
+   * Helps to avoid code redundancy when extract value from an option.
+   */
   methods: {
-    /**
-     * Helps to avoid code redundancy when extract value from an option.
-     */
     getOptionAttr (option, key, defaultVal = undefined) {
       return typeof option === 'object'
         ? key in option

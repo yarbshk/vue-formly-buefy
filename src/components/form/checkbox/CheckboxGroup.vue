@@ -17,10 +17,11 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/checkbox}
    */
+  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
   import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
-    mixins: [SelectricFieldMixin],
+    mixins: [BaseFormlyFieldMixin, SelectricFieldMixin],
     data () {
       return {
         canWrapChildren: true
