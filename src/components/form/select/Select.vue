@@ -36,9 +36,10 @@
    * {@link https://buefy.github.io/#/documentation/select}
    */
   import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
+  import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
-    mixins: [SelectricFieldMixin],
+    mixins: [SelectricFieldMixin, RequiredFieldMixin],
     data () {
       return {
         // It's necessary to set an initial value to null when no option selected,

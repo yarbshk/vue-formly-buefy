@@ -14,8 +14,9 @@
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFieldMixin from 'src/mixins/base-field.mixin'
+  import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
-    mixins: [BaseFieldMixin]
+    mixins: [BaseFieldMixin, RequiredFieldMixin]
   }
 </script>
