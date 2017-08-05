@@ -16,7 +16,7 @@
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
-  import FieldWrapperMixin from 'src/mixins/field-wrapper.mixin'
+  import WrappedFieldMixin from 'src/mixins/wrapped-field.mixin'
   import Field from './Field.vue'
 
   export default {
@@ -49,7 +49,7 @@
          */
         return {
           extends: this.wrappedComponent,
-          mixins: [FieldWrapperMixin]
+          mixins: [WrappedFieldMixin]
         }
       }
     }
