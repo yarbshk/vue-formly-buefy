@@ -2,7 +2,7 @@ import assert from 'assert'
 import { mount } from 'vuenit'
 
 import BaseFieldMixin from 'src/mixins/base-field.mixin'
-import BaseFieldWrapperMixin from 'src/mixins/base-field-wrapper.mixin'
+import BaseFormlyWrapperMixin from 'src/mixins/base-formly-wrapper.mixin'
 import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
 const props = () => ({
@@ -141,11 +141,11 @@ describe('BaseFormlyFieldMixin', function () {
   })
 })
 
-describe('BaseFieldWrapperMixin', function () {
+describe('BaseFormlyWrapperMixin', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(prepareComponent(BaseFieldWrapperMixin), {
+    vm = mount(prepareComponent(BaseFormlyWrapperMixin), {
       props: props()
     })
   })
