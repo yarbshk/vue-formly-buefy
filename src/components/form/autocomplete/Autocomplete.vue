@@ -15,11 +15,11 @@
    * Look at API section (the link below) for the reference
    * {@link https://buefy.github.io/#/documentation/autocomplete}
    */
-  import BaseFieldMixin from 'src/mixins/base-field.mixin'
+  import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
-    mixins: [BaseFieldMixin, RequiredFieldMixin],
+    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin],
     data () {
       return {
         data: this.getToValueOf('data', [])
