@@ -4,7 +4,7 @@
 The plugin consists from the following conditional parts:
 1. **Form Components** (Autocomplete, Checkbox, Input, Radio, Select and Switch). Everything is simple here, it's components which get user input or interact with one by using standard UI form elements.
 2. **Field Wrappers** (Field). Components which wrap another components. Use it when you need to wrap the form components by a parent component with tricky opportunities too often. When the opportunities of the parent component are primitive it's recommended to use the [standard Formly wrapper](https://matt-sanders.gitbooks.io/vue-formly/content/v/2.0/how_to_use/advanced_form_layouts.html) (e.g. `wrapper: '<div class="block"></div>'`).
-3. **Plain Controls** (Span, Button and Dropdown). It's used as controls of the form components. To better understanding [see example](https://github.com/yarbshk/vue-formly-buefy#examples).
+3. **Plain Controls** (Span and Button). It's used as controls of the form components.
 
 It's necessary to **understand the purpose** of the foregoing parts to be able to quick setup a form.
 
@@ -262,5 +262,7 @@ You already know **where** configuration properties should contain. The followin
 - `*-with-field`
 
 #### Reference
-- [Basic example](https://github.com/yarbshk/vue-formly-buefy#examples)
+- [Basic example 1](https://github.com/yarbshk/vue-formly-buefy#examples)
+- [Basic example 2](https://yarbshk.github.io/vue-formly-buefy-examples/#input)
 - [Source code](https://github.com/yarbshk/vue-formly-buefy/tree/master/src/components/general)
+- [Buefy docs - Field](https://buefy.github.io/#/documentation/field)

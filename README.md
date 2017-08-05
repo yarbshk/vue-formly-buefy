@@ -9,11 +9,12 @@ Depends on the following plugins:
 - [Vue Formly](https://github.com/formly-js/vue-formly)
 - [Buefy](https://github.com/rafaelpimpa/buefy)
 
-## Instalation
+## Installation
 First of all install necessary dependencies (see above) and **vue-formly-buefy** itself:
 ```bash
 $ yarn add vue-formly-buefy
 ```
+
 After, integrate the plugin with your project:
 ```javascript
 import Vue from 'vue'
@@ -29,6 +30,10 @@ new Vue({
   el: '#app'
 })
 ````
+...or just add a script directly to the document:
+```html
+<script src="/path_to_assets/vue-formly-buefy/dist/vue-formly-buefy.min.js"></script>
+```
 That's all :D
 
 ## Documentation
@@ -43,9 +48,6 @@ Simple example of creating an input type with a static button (span):
 </template>
 
 <script>
-  // Import helper Span component
-  import Span from 'vue-formly-buefy/src/components/general/span'
-  
   export default {
     // Set initial values for Formly form
     data: () => ({
@@ -56,16 +58,16 @@ Simple example of creating an input type with a static button (span):
       fields: [
         {
           key: 'email',
-          type: 'input-with-field',         // Easy wrapping with a Field component
+          type: 'input-with-field',         // Easy wrapping with a field wrapper
           templateOptions: {
             properties: {                   
-              'placeholder': 'Your email'   // Recommends to use quotes and kebab-case
+              'placeholder': 'Your email'   // It's recommended to use quotes and kebab-case
             },
-            wrapper: {                      // Configuration object of the Field component
+            wrapper: {                      // Configuration object of the field wrapper
               controls: {
                 after: [
-                  {
-                    type: Span,             // Use the Span helper as a field control
+                  {                         // Use the Span helper as a field control
+                    type: this.$formlyBuefy.plainControls.Span,
                     options: {              // Configuration object of the field control
                       label: '@gmail.com',
                       properties: {
@@ -89,16 +91,18 @@ The code above will generate the following Buefy markup:
 ...
 <b-field>
     <b-input placeholder="Your email"></b-input>
-    <p class="control">
+    <div class="control">
         <span class="button is-static">@gmail.com</span>
-    </p>
+    </div>
 </b-field>
 ...
 ```
 You can find [more examples here](https://github.com/yarbshk/vue-formly-buefy-examples/).
 
 ## Status
-The plugin passed the beta testing stage and now available for use in the **production** environment. I'll probably add more functionality later. This is what I need right now.
+The plugin passed the beta testing stage and now available for using in the **production** environment.
+
+I'll probably add more functionality later. This is what I need right now.
 
 ## Issues
 Be free to open an issue if you notice a bug. Let's make web a little bit better together :)
