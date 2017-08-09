@@ -24,7 +24,7 @@ If you would make PR for something that is bigger than a one or two line fix:
 2. **Before start development** be sure you are following:
     - Our [Code of Conduct](https://github.com/yarbshk/vue-formly-buefy/blob/master/CODE_OF_CONDUCT.md).
     - [The documented overview](https://github.com/yarbshk/vue-formly-buefy/wiki#overview) to have a particular roadmap.
-    - The code style for the project (use our `.eslint`).
+    - The code style for the project (use our `.eslintrc`).
     - Commit message convention (sentence case, present time).
 3. Do the changes in your fork.
 4. **Write one or more specs** (unit-tests) for all features or bug fixes.
