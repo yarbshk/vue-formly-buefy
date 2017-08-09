@@ -16,6 +16,10 @@ karma.conf.js
 webpack.config.js
 webpack.test.config.js
 
+# Community
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
 # Other
 docs/
 .babelrc
