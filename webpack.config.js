@@ -1,44 +1,40 @@
 const webpack = require('webpack')
 const path = require('path')
 const version = require('./package.json').version
-const banner = "/**\n" +
-               " * vue-formly-buefy v" + version + "\n" +
-               " * https://github.com/yarbshk/vue-formly-buefy.git\n" +
-               " * Released under the MIT License.\n" +
-               " */\n"
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const environment = process.env.NODE_ENV || 'development'
-const debug = environment === 'development'
+const banner = 'VueFormlyBuefy v' + version + '\n' +
+               '(c) 2017 Yuriy Rabeshko\n' +
+               'Released under the MIT License.'
 
-const rules = [
-  {
-    test: /\.js$/,
-    exclude: /node_modules/,
-    use: ['babel-loader', 'eslint-loader']
-  },
-  {
-    test: /\.vue$/,
-    loader: 'vue-loader',
-    options: {
-      extractCSS: !debug,
-      loaders: {
-        'scss': 'vue-style-loader!css-loader!sass-loader',
-        'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+const common = {
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'eslint-loader']
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       }
-    }
+    ]
   },
-  {
-    test: /\.(sass|scss|css)$/,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: ['css-loader', 'sass-loader']
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.BannerPlugin({
+      banner: banner
     })
+  ],
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src')
+    }
   }
-]
-
-const alias = {
-  src: path.resolve(__dirname, 'src')
 }
 
 module.exports = [
@@ -50,31 +46,16 @@ module.exports = [
       library: 'VueFormlyBuefy',
       libraryTarget: 'umd'
     },
-    module: {
-      rules: rules
-    },
+    module: common.module,
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(environment)
-        }
-      }),
+      ...common.plugins,
       new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
         compress: false,
         mangle: false
-      }),
-      new ExtractTextPlugin({
-        filename: 'vue-formly-buefy.css',
-        allChunks: true
-      }),
-      new webpack.BannerPlugin({
-        banner: banner,
-        raw: true
       })
     ],
-    resolve: {
-      alias: alias
-    }
+    resolve: common.resolve
   },
   {
     entry: path.resolve(__dirname, 'src/index'),
@@ -84,27 +65,29 @@ module.exports = [
       library: 'VueFormlyBuefy',
       libraryTarget: 'umd'
     },
-    module: {
-      rules: rules
-    },
+    module: common.module,
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(environment)
-        }
-      }),
+      ...common.plugins,
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        }
-      }),
-      new webpack.BannerPlugin({
-        banner: banner,
-        raw: true
+        sourceMap: true,
+        warnings: false
       })
     ],
-    resolve: {
-      alias: alias
-    }
+    resolve: common.resolve
+  },
+  {
+    entry: path.resolve(__dirname, 'src/plain-controls'),
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'plain-controls.js',
+      library: 'VfbPlainControls',
+      libraryTarget: 'umd'
+    },
+    module: common.module,
+    plugins: [
+      ...common.plugins,
+      new webpack.optimize.UglifyJsPlugin()
+    ],
+    resolve: common.resolve
   }
 ]

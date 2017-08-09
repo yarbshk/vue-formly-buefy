@@ -1,14 +1,23 @@
 ### Project ###
+# Node
 .node_modules/
-docs/
-test/
+.npmignore
+yarn.lock
+yarn-error.log
 
+# Docker
+docker-compose.yml
+
+# Karma
+test/
+karma.conf.js
+
+# Webpack
+webpack.config.js
+webpack.test.config.js
+
+# Other
+docs/
 .babelrc
 .eslintrc
 .gitignore
-.npmignore
-docker-compose.yml
-karma.conf.js
-webpack.config.js
-webpack.test.config.js
-yarn.lock
