@@ -48,6 +48,9 @@ Simple example of creating an input type with a static button (span):
 </template>
 
 <script>
+  // Import a span plain control
+  import { Span } from 'vue-formly-buefy/dist/plain-controls'
+
   export default {
     // Set initial values for Formly form
     data () {
@@ -67,8 +70,8 @@ Simple example of creating an input type with a static button (span):
               wrapper: {                      // Configuration object of the field wrapper
                 controls: {
                   after: [
-                    {                         // Use the Span helper as a field control
-                      type: this.$formlyBuefy.plainControls.Span,
+                    {
+                      type: Span,             // Use the Span component as a field control
                       options: {              // Configuration object of the field control
                         label: '@gmail.com',
                         properties: {
