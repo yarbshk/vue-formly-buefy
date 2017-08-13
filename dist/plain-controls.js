@@ -1,5 +1,5 @@
 /*!
- * VueFormlyBuefy v0.3.3
+ * VueFormlyBuefy v0.3.4
  * (c) 2017 Yuriy Rabeshko
  * Released under the MIT License.
  */
