@@ -69,7 +69,7 @@ describe('BaseFormlyFieldMixin', function () {
 
   describe('created()', function () {
     it('should override form state', function () {
-      assert.strictEqual(vm._dirty, false)
+      assert.strictEqual(vm._dirty, true)
       assert.strictEqual(vm._active, false)
     })
   })
@@ -108,7 +108,7 @@ describe('BaseFormlyFieldMixin', function () {
     })
 
     it('should change dirty and active state on blur event', function () {
-      assert.strictEqual(vm._dirty, false)
+      vm.form[vm.field.key].$dirty = false
       vm.toggleActiveState()
       assert.strictEqual(vm._active, true)
       vm.handleBlurEvent()
@@ -123,7 +123,7 @@ describe('BaseFormlyFieldMixin', function () {
     })
 
     it('should change dirty state on change event', function () {
-      assert.strictEqual(vm._dirty, false)
+      vm.form[vm.field.key].$dirty = false
       vm.handleChangeEvent()
       assert.strictEqual(vm._dirty, true)
     })

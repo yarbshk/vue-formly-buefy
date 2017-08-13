@@ -16,12 +16,13 @@ export default {
     }
   },
   /**
-   * Onetime initialisation of a field.
+   * Onetime initialization of a field.
    */
   created () {
+    const field = Object(this.form[this.field.key])
     this.$set(this.form, this.field.key, {
-      '$active': false,
-      '$dirty': false
+      '$active': '$active' in field ? field.$active : false,
+      '$dirty': '$dirty' in field ? field.$dirty : false
     })
   },
   methods: {
