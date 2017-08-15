@@ -3,7 +3,7 @@
             v-model="modelValue"
             @blur="handleBlurEvent"
             @focus="handleFocusEvent"
-            @change="handleChangeEvent">
+            @input="handleInputEvent">
     <template v-if="options.length">
       <!-- Render an optgroup select -->
       <template v-if="templateType === templateTypes.COMBINED">
