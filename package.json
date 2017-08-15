@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",
@@ -26,7 +26,7 @@
   },
   "author": "Yuriy Rabeshko <george.rabeshko@gmail.com>",
   "peerDependencies": {
-    "buefy": "^0.4.x",
+    "buefy": "^0.5.x",
     "vue-formly": "^2.x"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-vue-jsx": "^3.4.3",
     "babel-preset-env": "^1.6.0",
-    "buefy": "^0.4.6",
+    "buefy": "^0.5.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.2.0",
     "eslint-config-vue": "^2.0.2",
