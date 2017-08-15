@@ -3,7 +3,7 @@
            v-model="model[field.key]"
            @blur="handleBlurEvent"
            @focus="handleFocusEvent"
-           @change="handleChangeEvent">
+           @input="handleInputEvent">
   </b-input>
 </template>
 
