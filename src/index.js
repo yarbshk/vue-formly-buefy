@@ -13,8 +13,8 @@ const VueFormlyBuefy = {
     addTypes(Vue.$formly, {
       // Plain
       Autocomplete,
+      Checkbox,
       Input,
-      'checkbox': Checkbox.Checkbox,
       'radio': Radio.Radio,
       Select,
       Switch,
