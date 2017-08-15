@@ -1,7 +1,7 @@
 <template>
   <b-checkbox v-model="model[field.key]"
               v-bind="properties"
-              @change="handleChangeEvent">
+              @input="handleInputEvent">
     {{ label }}
   </b-checkbox>
 </template>
