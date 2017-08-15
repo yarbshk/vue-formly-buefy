@@ -7,6 +7,7 @@ import Checkbox from './components/form/checkbox'
 import Radio from './components/form/radio'
 import Select from './components/form/select'
 import Switch from './components/form/switch'
+import Upload from './components/form/upload'
 
 const VueFormlyBuefy = {
   install (Vue, options) {
@@ -23,7 +24,9 @@ const VueFormlyBuefy = {
       'input-with-field': wrapComponent(Input, Field.Wrapper),
       'radio': Radio.Radio,
       'radio-button': Radio.RadioButton,
-      'select-with-field': wrapComponent(Select, Field.Wrapper)
+      'select-with-field': wrapComponent(Select, Field.Wrapper),
+      'upload': Upload.Upload,
+      'upload-drag-drop': Upload.DragDrop
     })
   }
 }
