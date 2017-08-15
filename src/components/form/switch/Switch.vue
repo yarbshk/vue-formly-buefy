@@ -1,7 +1,7 @@
 <template>
   <b-switch v-bind="properties"
             v-model="model[field.key]"
-            @change="handleChangeEvent">
+            @input="handleInputEvent">
     {{ label }}
   </b-switch>
 </template>
