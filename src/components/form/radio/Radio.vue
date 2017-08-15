@@ -1,14 +1,14 @@
 <template>
-  <b-radio-group v-model="model[field.key]"
-                 v-bind="properties"
-                 @change="handleChangeEvent">
+  <div v-bind="properties">
     <b-radio v-for="(option, index) in options"
              v-bind:key="index"
-             :value="getOptionAttr(option, 'value', option.text)"
-             v-bind="option.properties">
+             v-bind="option.properties"
+             v-model="model[field.key]"
+             :native-value="getOptionAttr(option, 'value', option.text)"
+             @input="handleInputEvent">
       {{ getOptionAttr(option, 'text') }}
     </b-radio>
-  </b-radio-group>
+  </div>
 </template>
 
 <script>

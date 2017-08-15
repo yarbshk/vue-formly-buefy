@@ -15,13 +15,13 @@ const VueFormlyBuefy = {
       Autocomplete,
       Checkbox,
       Input,
-      'radio': Radio.Radio,
       Select,
       Switch,
       // Combined
       'autocomplete-with-field': wrapComponent(Autocomplete, Field.Wrapper),
-      'input-with-field': wrapComponent(Input, Field.Wrapper),
       'checkbox-group': Checkbox.CheckboxGroup,
+      'input-with-field': wrapComponent(Input, Field.Wrapper),
+      'radio': Radio.Radio,
       'radio-button': Radio.RadioButton,
       'select-with-field': wrapComponent(Select, Field.Wrapper)
     })
