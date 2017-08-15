@@ -121,12 +121,6 @@ describe('BaseFormlyFieldMixin', function () {
       vm.handleFocusEvent()
       assert.strictEqual(vm._active, true)
     })
-
-    it('should change dirty state on change event', function () {
-      vm.form[vm.field.key].$dirty = false
-      vm.handleChangeEvent()
-      assert.strictEqual(vm._dirty, true)
-    })
   })
 })
 

@@ -5,7 +5,7 @@
                   @blur="handleBlurEvent"
                   @focus="handleFocusEvent"
                   @input="handleInputEvent"
-                  @select="handleSelectEvent">
+                  @selected="handleSelectedEvent">
   </b-autocomplete>
 </template>
 

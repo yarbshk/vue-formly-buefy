@@ -60,15 +60,11 @@ export default {
       this.toggleActiveState(true)
       this.callCustomEventHandler('focus', args)
     },
-    handleChangeEvent (...args) {
-      this.defineDirtyState()
-      this.callCustomEventHandler('change', args)
-    },
     handleInputEvent (...args) {
       this.callCustomEventHandler('input', args)
     },
-    handleSelectEvent (...args) {
-      this.callCustomEventHandler('select', args)
+    handleSelectedEvent (...args) {
+      this.callCustomEventHandler('selected', args)
     }
   }
 }
