@@ -274,6 +274,32 @@ You already know **where** configuration properties should contain. The followin
 - [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#upload)
 - [Buefy docs - Upload](https://buefy.github.io/#/documentation/upload)
 
+***
+
+### Datepicker
+#### Supported Buefy features
+- [x] Datepicker
+- [x] Range
+- [ ] Footer
+- [x] Inline
+
+#### Formly types
+- `datepicker`
+- `datepicker-with-field`
+
+#### API structure (**`datepicker`**)
+- properties: `Object`
+- events: `Object<function>`
+
+#### API structure (**`datepicker-with-field`**)
+- properties: `Object`
+- events: `Object<function>`
+- [wrapper](#2-field-wrappers-1): `Object`
+
+#### Reference
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#datepicker)
+- [Buefy docs - Datepicker](https://buefy.github.io/#/documentation/datepicker)
+
 ## 2. Field Wrappers
 > There are one wrapper - **Field** (only **Autocomplete**, **Input** and **Select** form components can be wrapped by this wrapper). To use wrapper just add a suffix `-with-field` for some Formly type (e.g. `input-with-field`) when registering a form component. [See examples](https://github.com/yarbshk/vue-formly-buefy-examples/) for more explanation.
 
