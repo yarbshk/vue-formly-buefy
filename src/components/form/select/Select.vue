@@ -43,9 +43,6 @@
     mixins: [BaseFormlyFieldMixin, SelectricFieldMixin, RequiredFieldMixin],
     data () {
       return {
-        // It's necessary to set an initial value to null when no option selected,
-        // because placeholder is not visible when value different from null
-        modelValue: this._model || null,
         templateTypes: {
           PLAIN: 'plain',
           COMBINED: 'combined'
@@ -53,6 +50,16 @@
       }
     },
     computed: {
+      // It's necessary to set an initial value to null when no option selected,
+      // because placeholder is not visible when value different from null
+      modelValue: {
+        get () {
+          return this._model || null
+        },
+        set (newValue) {
+          this.model[this.field.key] = newValue
+        }
+      },
       templateType () {
         /**
          * Define a template type for child nodes of a select.
