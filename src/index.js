@@ -1,6 +1,7 @@
 import { addTypes, wrapComponent } from './utils'
 
 import Autocomplete from './components/form/autocomplete'
+import Datepicker from './components/form/datepicker' ,
 import Field from './components/form/field'
 import Input from './components/form/input'
 import Checkbox from './components/form/checkbox'
@@ -15,11 +16,13 @@ const VueFormlyBuefy = {
       // Plain
       Autocomplete,
       Checkbox,
+      Datepicker,
       Input,
       Select,
       Switch,
       // Combined
       'autocomplete-with-field': wrapComponent(Autocomplete, Field.Wrapper),
+      'datepicker-with-field': wrapComponent(Datepicker, Field.Wrapper),
       'input-with-field': wrapComponent(Input, Field.Wrapper),
       'radio': Radio.Radio,
       'radio-button': Radio.RadioButton,
