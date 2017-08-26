@@ -108,10 +108,16 @@ You already know **where** configuration properties should contain. The followin
 - `autocomplete`
 - `autocomplete-with-field`
 
-#### API structure
+#### API structure (**`autocomplete`**)
 - data: `Array<string|object>`
 - properties: `Object`
 - events: `Object<function>`
+
+#### API structure (**`autocomplete-with-field`**)
+- data: `Array<string|object>`
+- properties: `Object`
+- events: `Object<function>`
+- [wrapper](#2-field-wrappers-1): `Object`
 
 #### Reference
 - [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#autocomplete)
@@ -122,20 +128,13 @@ You already know **where** configuration properties should contain. The followin
 ### Checkbox
 #### Supported Buefy features
 - [x] Checkbox
-- [x] Checkbox Group (optionally wrap child elements by a custom tag, e.g. `<div class="field"></div>`)
+- [x] Grouped (Array)
 
 #### Formly types
 - `checkbox`
-- `checkbox-group`
 
-#### API structure (`checkbox`)
+#### API structure
 - label: `String`
-- properties: `Object`
-- events: `Object<function>`
-
-#### API structure (`checkbox-group`)
-- options: `Array<string|object>`
-- childWrapper: `String`
 - properties: `Object`
 - events: `Object<function>`
 
@@ -147,6 +146,7 @@ You already know **where** configuration properties should contain. The followin
 
 ### Input
 #### Supported Buefy features
+- [x] Input
 - [x] Types & States
 - [x] Icons
 - [x] Validation
@@ -157,9 +157,14 @@ You already know **where** configuration properties should contain. The followin
 - `input`
 - `input-with-field`
 
-#### API structure
+#### API structure (**`input`**)
 - properties: `Object`
 - events: `Object<function>`
+
+#### API structure (**`input-with-field`**)
+- properties: `Object`
+- events: `Object<function>`
+- [wrapper](#2-field-wrappers-1): `Object`
 
 #### Reference
 - [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#input)
@@ -169,9 +174,8 @@ You already know **where** configuration properties should contain. The followin
 
 ### Radio
 #### Supported Buefy features
-- [x] Radio (optionally wrap child elements by a custom tag, e.g. `<div class="field"></div>`)
+- [x] Radio (+ wrap child elements by a custom tag, e.g. `<div class="field"></div>`)
 - [x] Radio Button
-- [x] Radio Group
 
 #### Formly types
 - `radio`
@@ -196,6 +200,8 @@ You already know **where** configuration properties should contain. The followin
 
 ### Select
 #### Supported Buefy features
+- [x] Select
+- [x] Multiple
 - [x] Icons
 - [x] Selection
 - [x] Sizes
@@ -204,10 +210,16 @@ You already know **where** configuration properties should contain. The followin
 - `select`
 - `select-with-field`
 
-#### API structure
+#### API structure (**`select`**)
 - options: `Array<string|object>`
 - properties: `Object`
 - events: `Object<function>`
+
+#### API structure (**`select-with-field`**)
+- options: `Array<string|object>`
+- properties: `Object`
+- events: `Object<function>`
+- [wrapper](#2-field-wrappers-1): `Object`
 
 #### Reference
 - [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#select)
@@ -217,6 +229,8 @@ You already know **where** configuration properties should contain. The followin
 
 ### Switch
 #### Supported Buefy features
+- [x] Switch
+- [x] Types
 - [x] Sizes
 
 #### Formly types
@@ -231,12 +245,43 @@ You already know **where** configuration properties should contain. The followin
 - [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#switch)
 - [Buefy docs - Switch](https://buefy.github.io/#/documentation/switch)
 
+***
+
+### Upload
+#### Supported Buefy features
+- [x] Upload
+- [x] Drag and drop
+
+#### Formly types
+- `upload`
+- `upload-drag-drop`
+
+#### API structure (**`upload`**)
+- label: `String`
+- type: `String`
+- icon: `String|Object`
+- properties: `Object`
+- events: `Object<function>`
+
+#### API structure (**`upload-drag-drop`**)
+- label: `String`
+- tag: `Object`
+- icon: `String|Object`
+- properties: `Object`
+- events: `Object<function>`
+
+#### Reference
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy-examples/#upload)
+- [Buefy docs - Upload](https://buefy.github.io/#/documentation/upload)
+
 ## 2. Field Wrappers
 > There are one wrapper - **Field** (only **Autocomplete**, **Input** and **Select** form components can be wrapped by this wrapper). To use wrapper just add a suffix `-with-field` for some Formly type (e.g. `input-with-field`) when registering a form component. [See examples](https://github.com/yarbshk/vue-formly-buefy-examples/) for more explanation.
 
 #### Supported Buefy features
+- [x] Field
 - [x] Addons
 - [ ] Groups
+- [x] Positions
 - [ ] Combining addons and groups
 
 #### Formly types
