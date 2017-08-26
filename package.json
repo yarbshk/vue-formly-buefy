@@ -4,10 +4,10 @@
   "description": "Vue.js plugin that covers the Buefy form fields for Formly.",
   "keywords": [
     "vue",
-    "vuejs",
-    "form",
     "formly",
     "buefy",
+    "form",
+    "vuejs",
     "bulma"
   ],
   "homepage": "https://github.com/yarbshk/vue-formly-buefy.git#readme",
@@ -26,8 +26,8 @@
   },
   "author": "Yuriy Rabeshko <george.rabeshko@gmail.com>",
   "peerDependencies": {
-    "buefy": "^0.5.x",
-    "vue-formly": "^2.x"
+    "buefy": "^0.5.1",
+    "vue-formly": "^2.4.5"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
