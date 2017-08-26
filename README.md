@@ -1,6 +1,6 @@
 # vue-formly-buefy
 Vue.js plugin that covers the [Buefy](https://buefy.github.io) form fields for [Formly](https://github.com/formly-js/vue-formly). Allows you to combine simplicity of Formly form builder, lightness of Buefy form components and impeccability of [Bulma](http://bulma.io/) design.
-- **Fully-featured.** All Buefy form components are covered (**Input**, **Select**, **Autocomplete**, **Checkbox**, **Radio** and **Switch**). Create form elements of all native `input` types + `textarea`.
+- **Fully-featured.** All Buefy form components are covered (**Input**, **Select**, **Autocomplete**, **Checkbox**, **Radio**, **Switch**, **Upload** and **Datepicker**). Create form elements of all native `input` types + `textarea`.
 - **Well-judged.** Wrapper elements now accessible (**Field**). Wrap Input, Select and Autocomplete form components to increase its functionality (`.controls` elements, validation state indicator, addons available).
 - **Straightforward.** Simple is better than complex.
 
