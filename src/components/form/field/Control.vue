@@ -6,6 +6,7 @@
 
 <script>
   export default {
+    name: 'vfbControl',
     props: {
       type: Object,
       options: {
