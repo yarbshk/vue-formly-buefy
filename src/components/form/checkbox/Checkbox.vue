@@ -15,6 +15,7 @@
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
 
   export default {
+    name: 'vfbCheckbox',
     mixins: [BaseFormlyFieldMixin],
     computed: {
       label () {
