@@ -37,6 +37,7 @@
   import UploadFieldMixin from 'src/mixins/upload-field.mixin'
 
   export default {
+    name: 'vfbDragDrop',
     mixins: [BaseFormlyFieldMixin, UploadFieldMixin],
     data () {
       return {

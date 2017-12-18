@@ -24,6 +24,7 @@
   import UploadFieldMixin from 'src/mixins/upload-field.mixin'
 
   export default {
+    name: 'vfbUpload',
     mixins: [BaseFormlyFieldMixin, UploadFieldMixin],
     data () {
       return {

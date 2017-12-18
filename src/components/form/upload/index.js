@@ -3,5 +3,5 @@ import Upload from './Upload.vue'
 
 export default {
   DragDrop,
-  Upload
+  Default: Upload
 }
