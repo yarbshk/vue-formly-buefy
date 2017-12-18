@@ -4,8 +4,7 @@
                     v-bind:key="index"
                     v-bind="option.properties"
                     v-model="model[field.key]"
-                    :native-value="getOptionAttr(option, 'value', option.text)"
-                    @input="handleInputEvent">
+                    :native-value="getOptionAttr(option, 'value', option.text)">
       <b-icon v-if="option.icon" :icon="option.icon"></b-icon>
       <span v-text="getOptionAttr(option, 'text')"></span>
     </b-radio-button>
@@ -22,6 +21,7 @@
   import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
+    name: 'vfbRadioButton',
     mixins: [BaseFormlyFieldMixin, SelectricFieldMixin]
   }
 </script>

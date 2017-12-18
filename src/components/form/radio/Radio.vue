@@ -21,6 +21,7 @@
   import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
+    name: 'vfbRadio',
     mixins: [BaseFormlyFieldMixin, SelectricFieldMixin],
     data () {
       return {
