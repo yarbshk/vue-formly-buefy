@@ -40,6 +40,7 @@
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
+    name: 'vfbSelect',
     mixins: [BaseFormlyFieldMixin, SelectricFieldMixin, RequiredFieldMixin],
     data () {
       return {
