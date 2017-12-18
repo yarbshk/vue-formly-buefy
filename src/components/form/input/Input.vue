@@ -17,6 +17,7 @@
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
+    name: 'vfbInput',
     mixins: [BaseFormlyFieldMixin, RequiredFieldMixin]
   }
 </script>
