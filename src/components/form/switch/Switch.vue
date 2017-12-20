@@ -19,7 +19,7 @@
     mixins: [BaseFormlyFieldMixin],
     computed: {
       label () {
-        return this.getToValueOf('label', this._model.toString())
+        return this.getTemplateOption('label', this._model.toString())
       }
     }
   }

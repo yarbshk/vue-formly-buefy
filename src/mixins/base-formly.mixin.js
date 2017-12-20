@@ -36,10 +36,10 @@ export default {
     },
     // Shortcuts. Quick access to field's props
     // Note: Provided values are not reactive!
-    getFieldValueOf (path, defaultVal = undefined) {
+    getField (path, defaultVal = undefined) {
       return this._getValueOf(this.field, path, defaultVal)
     },
-    getToValueOf (path, defaultVal = undefined) {
+    getTemplateOption (path, defaultVal = undefined) {
       return this._getValueOf(this.to, path, defaultVal)
     },
     // Handling errors

@@ -4,7 +4,7 @@ export default {
   mixins: [BaseFormlyMixin],
   data () {
     return {
-      properties: this.getToValueOf('properties', {})
+      properties: this.getTemplateOption('properties', {})
     }
   },
   computed: {
@@ -49,22 +49,25 @@ export default {
      * Call the handler if it exists, in other case ignore.
      */
     callCustomEventHandler (name, ...args) {
-      return this.getToValueOf('events/' + name, () => {})(args)
+      return this.getTemplateOption('events/' + name, () => {})(args)
     },
-    handleBlurEvent (...args) {
+    onBlur () {
       this.defineDirtyState()
       this.toggleActiveState(false)
+    },
+    onFocus () {
+      this.toggleActiveState(true)
+    },
+    handleBlurEvent (...args) {
+      this.onBlur()
       this.callCustomEventHandler('blur', args)
     },
     handleFocusEvent (...args) {
-      this.toggleActiveState(true)
+      this.onFocus()
       this.callCustomEventHandler('focus', args)
     },
     handleInputEvent (...args) {
       this.callCustomEventHandler('input', args)
-    },
-    handleSelectedEvent (...args) {
-      this.callCustomEventHandler('selected', args)
     }
   }
 }

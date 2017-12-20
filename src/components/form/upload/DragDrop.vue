@@ -41,7 +41,7 @@
     mixins: [BaseFormlyFieldMixin, UploadFieldMixin],
     data () {
       return {
-        tag: this.getToValueOf('tag', {})
+        tag: this.getTemplateOption('tag', {})
       }
     },
     computed: {

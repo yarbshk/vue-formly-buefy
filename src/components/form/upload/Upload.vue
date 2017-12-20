@@ -28,7 +28,7 @@
     mixins: [BaseFormlyFieldMixin, UploadFieldMixin],
     data () {
       return {
-        type: this.getToValueOf('type', 'is-primary')
+        type: this.getTemplateOption('type', 'is-primary')
       }
     },
     computed: {

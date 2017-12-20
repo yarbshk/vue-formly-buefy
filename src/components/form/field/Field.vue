@@ -40,8 +40,8 @@
     },
     data () {
       return {
-        controls: this.getToValueOf('wrapper/controls', {}),
-        properties: this.getToValueOf('wrapper/properties', {})
+        controls: this.getTemplateOption('wrapper/controls', {}),
+        properties: this.getTemplateOption('wrapper/properties', {})
       }
     },
     computed: {
@@ -62,7 +62,7 @@
         if (!this._dirty) return [undefined, undefined]
         return Object.values(this._errors).filter(x => x).length
            ? ['is-danger', this.getErrorMessage()]
-           : ['is-success', this.getToValueOf('wrapper/properties/message')]
+           : ['is-success', this.getTemplateOption('wrapper/properties/message')]
       }
     }
   }
