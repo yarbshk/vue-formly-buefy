@@ -1,6 +1,8 @@
 <template>
   <b-timepicker v-bind="properties"
-                v-model="model[field.key]">
+                v-model="model[field.key]"
+                @blur="onBlur"
+                @focus="onFocus">
   </b-timepicker>
 </template>
 
