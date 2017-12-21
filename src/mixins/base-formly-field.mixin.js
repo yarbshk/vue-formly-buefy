@@ -67,6 +67,7 @@ export default {
       this.callCustomEventHandler('focus', args)
     },
     handleInputEvent (...args) {
+      this.defineDirtyState()
       this.callCustomEventHandler('input', args)
     }
   }
