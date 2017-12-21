@@ -16,32 +16,19 @@
    * {@link https://buefy.github.io/#/documentation/autocomplete}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import FilteredFieldMixin from 'src/mixins/filtered-field.mixin'
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
-
+  
   export default {
     name: 'vfbAutocomplete',
-    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin],
-    data () {
-      return {
-        data: this.getToValueOf('data', [])
-      }
-    },
-    computed: {
-      filteredData () {
-        const customFilter = this.getToValueOf('filter')
-        return this.data.filter(customFilter || this.defaultFilter)
-      }
-    },
+    mixins: [BaseFormlyFieldMixin, FilteredFieldMixin, RequiredFieldMixin],
     methods: {
-      defaultFilter (option) {
-        if (typeof option === 'object') {
-          const path = this.getToValueOf('properties/field', '')
-          path.split('.').forEach(cell => option = option[cell])
-        }
-        return option
-          .toString()
-          .toLowerCase()
-          .indexOf(this._model.toLowerCase()) !== -1
+      handleInputEvent (...args) {
+        this.getFilteredData(args[0])
+        this.callCustomEventHandler('input', args)
+      },
+      handleSelectedEvent (...args) {
+        this.callCustomEventHandler('selected', args)
       }
     }
   }
