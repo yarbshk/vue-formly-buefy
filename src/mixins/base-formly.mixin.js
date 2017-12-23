@@ -1,3 +1,7 @@
+/**
+ * Base mixin for the form fields and wrappers.
+ * Keep common properties of the form fields and wrappers.
+ */
 export default {
   props: {
     form: Object,
@@ -6,54 +10,75 @@ export default {
     to: Object
   },
   computed: {
+    _formField () {
+      return Object(this.form[this.field.key])
+    },
+    _formErrors () {
+      return Object(this.form.$errors[this.field.key])
+    },
     _model () {
       return this.model[this.field.key]
     },
-    _errors () {
-      return this.form.$errors[this.field.key]
+    _active () {
+      return this._formField.$active
+    },
+    _dirty () {
+      return this._formField.$dirty
     }
   },
   methods: {
-    // Core access function
     /**
-     * Gets value from object or its default value by relative path.
-     * Used to get cached value of Formly field props (field, to).
+     * Gets first readable message from a current errors stack of the field.
+     * @param {String} name - The name of a validator function.
+     * @returns {String} errorMessage
+     */
+    getErrorMessage (name) {
+      let errorMessage = this._formErrors[name]
+      if (!errorMessage) {
+        const clearErrorMessages = Object
+          .values(this._formErrors)
+          .filter(x => typeof x === 'string' && x)
+        if (clearErrorMessages.length) errorMessage = clearErrorMessages[0]
+      }
+      return errorMessage
+    },
+    /**
+     * Gets a native or default value of an object by relative path.
+     * Usually is using to get a value from the property.
      * @example
      * // returns 1
-     * _getValueOf({a: {b: {c: 1}}}, 'a/b/c')
-     * @example
-     * // returns null
-     * _getValueOf({a: {b: {c: 1}}}, 'a/b/x', null)
+     * getPropertyValue({a: {b: {c: 1}}}, 'a/b/c')
+     * @param {Object} obj
+     * @param {String} path
+     * @param {*} defaultVal
+     * @returns {*} value
      */
-    _getValueOf (obj, path, defaultVal = undefined) {
+    getPropertyValue (obj, path, defaultVal = undefined) {
       let value = defaultVal
-      path.split('/').some(function (elem, i, arr) {
+      path.split('/').some((elem, i, arr) => {
         if (!obj.hasOwnProperty(elem)) return true
         if (++i === arr.length) value = obj[elem]
         else obj = obj[elem]
       })
       return value
     },
-    // Shortcuts. Quick access to field's props
-    // Note: Provided values are not reactive!
-    getField (path, defaultVal = undefined) {
-      return this._getValueOf(this.field, path, defaultVal)
-    },
-    getTemplateOption (path, defaultVal = undefined) {
-      return this._getValueOf(this.to, path, defaultVal)
-    },
-    // Handling errors
     /**
-     * Get first readable message from a current field's errors stack.
-     * Formly provide boolean errors when error message doesn't set,
-     * therefore it's necessary manually choose the human readable messages.
+     * Gets a value of the field property.
+     * This is a shortcut function.
+     * @param {String} path
+     * @param {*} defaultVal
      */
-    getErrorMessage (name) {
-      const errors = this._errors
-      const errorMessages = Object
-        .values(errors[name] ? { x: errors[name] } : errors)
-        .filter(x => typeof x === 'string' && x)
-      if (errorMessages.length) return errorMessages[0]
+    getField (path, defaultVal = undefined) {
+      return this.getPropertyValue(this.field, path, defaultVal)
+    },
+    /**
+     * Gets a value of the templateOptions property.
+     * This is a shortcut function.
+     * @param {String} path
+     * @param {*} defaultVal
+     */
+    getTemplateOption (path, defaultVal = undefined) {
+      return this.getPropertyValue(this.to, path, defaultVal)
     }
   }
 }

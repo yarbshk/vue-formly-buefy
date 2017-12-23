@@ -7,49 +7,38 @@ export default {
       properties: this.getTemplateOption('properties', {})
     }
   },
-  computed: {
-    _active () {
-      return this.form[this.field.key].$active
-    },
-    _dirty () {
-      return this.form[this.field.key].$dirty
-    }
-  },
-  /**
-   * Onetime initialization of a field.
-   */
   created () {
-    const field = Object(this.form[this.field.key])
+    const formField = this._formField
+    // Initialize the form property of the field
     this.$set(this.form, this.field.key, {
-      '$active': '$active' in field ? field.$active : false,
-      '$dirty': '$dirty' in field ? field.$dirty : false
+      '$active': '$active' in formField ? formField.$active : false,
+      '$dirty': '$dirty' in formField ? formField.$dirty : false
     })
   },
   methods: {
     /**
-     * Take virgin of a field by using a blur or change event.
-     * It's there only for user reference. Sets it once.
+     * Registers the initial user's interaction with the field.
      */
     defineDirtyState () {
-      if (!this.$dirty) {
-        this.$set(this.form[this.field.key], '$dirty', true)
-      }
+      if (!this.$dirty) this.$set(this._formField, '$dirty', true)
     },
     /**
-     * Change an active flag on focus event.
+     * Toggle the switch when a user interact with the field.
+     * @param {Boolean} forcedState
      */
     toggleActiveState (forcedState) {
-      const isActive = typeof forcedState === 'undefined'
-        ? !this._active
-        : Boolean(forcedState)
-      this.$set(this.form[this.field.key], '$active', isActive)
+      const isActive = typeof forcedState !== 'undefined'
+        ? !!forcedState
+        : !this._formField.$active
+      this.$set(this._formField, '$active', isActive)
     },
     /**
-     * Search for implementation of a custom event handler.
-     * Call the handler if it exists, in other case ignore.
+     * Search for an implementation of the custom event handler.
+     * @param {String} name
+     * @param {*} args
      */
     callCustomEventHandler (name, ...args) {
-      return this.getTemplateOption('events/' + name, () => {})(args)
+      return this.getTemplateOption('events/' + name, () => {})(...args)
     },
     onBlur () {
       this.defineDirtyState()
@@ -60,15 +49,15 @@ export default {
     },
     handleBlurEvent (...args) {
       this.onBlur()
-      this.callCustomEventHandler('blur', args)
+      this.callCustomEventHandler('blur', ...args)
     },
     handleFocusEvent (...args) {
       this.onFocus()
-      this.callCustomEventHandler('focus', args)
+      this.callCustomEventHandler('focus', ...args)
     },
     handleInputEvent (...args) {
       this.defineDirtyState()
-      this.callCustomEventHandler('input', args)
+      this.callCustomEventHandler('input', ...args)
     }
   }
 }
