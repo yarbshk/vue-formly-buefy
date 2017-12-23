@@ -8,26 +8,32 @@ import Checkbox from './components/form/checkbox'
 import Radio from './components/form/radio'
 import Select from './components/form/select'
 import Switch from './components/form/switch'
+import Taginput from './components/form/taginput'
+import Timepicker from './components/form/timepicker'
 import Upload from './components/form/upload'
 
 const VueFormlyBuefy = {
   install (Vue, options) {
     addTypes(Vue.$formly, {
-      // Plain
-      Autocomplete,
-      Checkbox,
-      Datepicker,
-      Input,
-      Select,
-      Switch,
-      // Combined
-      'autocomplete-with-field': wrapComponent(Autocomplete, Field.Wrapper),
-      'datepicker-with-field': wrapComponent(Datepicker, Field.Wrapper),
-      'input-with-field': wrapComponent(Input, Field.Wrapper),
-      'radio': Radio.Radio,
+      'autocomplete': Autocomplete,
+      'autocomplete-with-field': wrapComponent(Autocomplete, Field.Default),
+      'checkbox': Checkbox.Default,
+      'checkbox-button': Checkbox.CheckboxButton,
+      'checkbox-button-with-field': wrapComponent(Checkbox.CheckboxButton, Field.MultiField),
+      'datepicker': Datepicker,
+      'datepicker-with-field': wrapComponent(Datepicker, Field.Default),
+      'input': Input,
+      'input-with-field': wrapComponent(Input, Field.Default),
+      'radio': Radio.Default,
       'radio-button': Radio.RadioButton,
-      'select-with-field': wrapComponent(Select, Field.Wrapper),
-      'upload': Upload.Upload,
+      'select': Select,
+      'select-with-field': wrapComponent(Select, Field.Default),
+      'switch': Switch,
+      'taginput': Taginput,
+      'taginput-with-field': wrapComponent(Taginput, Field.Default),
+      'timepicker': Timepicker,
+      'timepicker-with-field': wrapComponent(Timepicker, Field.Default),
+      'upload': Upload.Default,
       'upload-drag-drop': Upload.DragDrop
     })
   }
