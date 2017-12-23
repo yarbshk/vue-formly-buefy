@@ -17,7 +17,7 @@ export default {
         const path = this.getTemplateOption('properties/field', '')
         path.split('.').forEach((cell) => { option = option[cell] })
       }
-      // Find occurrences
+      // Search for occurrences
       return option
         .toString()
         .toLowerCase()
