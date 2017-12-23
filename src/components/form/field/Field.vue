@@ -2,12 +2,12 @@
   <b-field v-bind="extendedProperties">
     <template v-if="controls.hasOwnProperty('before')">
       <vfb-control v-for="(control, index) in controls.before"
-                  :type="control.type"
-                  :options="control.options"
-                  v-bind:key="index">
+                   :key="index"
+                   :options="control.options"
+                   :type="control.type">
       </vfb-control>
     </template>
-    <component v-bind:is="wrappedComponent"
+    <component :is="wrappedComponent"
                :form.sync="form"
                :model="model"
                :field="field"
@@ -15,9 +15,9 @@
     </component>
     <template v-if="controls.hasOwnProperty('after')">
       <vfb-control v-for="(control, index) in controls.after"
-                  :type="control.type"
-                  :options="control.options"
-                  v-bind:key="index">
+                   :key="index"
+                   :options="control.options"
+                   :type="control.type">
       </vfb-control>
     </template>
   </b-field>
@@ -25,18 +25,18 @@
 
 <script>
   /**
-   * Implements a wrapper for Input, Select or Autocomplete form types.
-   * This component add additional functionality to foregoing components.
+   * The wrapper for components with a single child.
+   * Adds additional functionality to foregoing components.
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFormlyWrapperMixin from 'src/mixins/base-formly-wrapper.mixin'
-  import VfbControl from './Control.vue'
+  import VFBControl from './Control.vue'
 
   export default {
     name: 'vfbFieldWrapper',
     mixins: [BaseFormlyWrapperMixin],
     components: {
-      [VfbControl.name]: VfbControl
+      [VFBControl.name]: VFBControl
     },
     data () {
       return {
@@ -47,20 +47,16 @@
     computed: {
       extendedProperties () {
         let [type, message] = this.getValidationState()
-        return Object.assign({}, this.properties, {
-          type: type,
-          message: message
-        })
+        return Object.assign({}, this.properties, { type, message })
       }
     },
     methods: {
       /**
-       * Define type and message properties for a Buefy field component.
-       * It's necessary condition of a Formly form validation rules.
+       * Define the type and message properties for the field.
        */
       getValidationState () {
-        if (!this._dirty) return [undefined, undefined]
-        return Object.values(this._errors).filter(x => x).length
+        if (!this._formField.$dirty) return [undefined, undefined]
+        return Object.values(this._formErrors).filter(x => x).length
            ? ['is-danger', this.getErrorMessage()]
            : ['is-success', this.getTemplateOption('wrapper/properties/message')]
       }
