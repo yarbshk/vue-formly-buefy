@@ -1,9 +1,9 @@
 <template>
-  <div v-bind="properties">
+  <div class="block">
     <b-radio v-for="(option, index) in options"
-             v-bind:key="index"
              v-bind="option.properties"
              v-model="model[field.key]"
+             :key="index"
              :native-value="getOptionAttr(option, 'value', option.text)"
              @input="handleInputEvent">
       {{ getOptionAttr(option, 'text') }}
@@ -13,8 +13,7 @@
 
 <script>
   /**
-   * Implements a radio group of radio fields.
-   * Look at API section (the link below) for the reference
+   * Select an option from a set.
    * {@link https://buefy.github.io/#/documentation/radio}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
