@@ -1,6 +1,6 @@
 <template>
-  <b-checkbox v-model="model[field.key]"
-              v-bind="properties"
+  <b-checkbox v-bind="properties"
+              v-model="model[field.key]"
               @input="handleInputEvent">
     {{ label }}
   </b-checkbox>
@@ -8,8 +8,7 @@
 
 <script>
   /**
-   * Implements a checkbox field.
-   * Look at API section (the link below) for the reference
+   * Permits the user to make a binary choice (also accept grouping).
    * {@link https://buefy.github.io/#/documentation/checkbox}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
