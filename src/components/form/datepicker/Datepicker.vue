@@ -1,20 +1,46 @@
 <template>
   <b-datepicker v-bind="properties"
-                v-model="model[field.key]">
+                v-model="modelValue"
+                @blur="handleBlurEvent"
+                @focus="handleFocusEvent"
+                @input="handleInputEvent"
+                @input.native="handleInputNativeEvent"
+                @active-change="handleActiveChangeEvent">
   </b-datepicker>
 </template>
 
 <script>
   /**
-   * Implements an input or textarea field.
-   * Look at API section (the link below) for the reference
-   * {@link https://buefy.github.io/#/documentation/field}
+   * An input with a simple dropdown/modal for selecting a date, 
+   * uses native datepicker for mobile.
+   * {@link https://buefy.github.io/#/documentation/datepicker}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
 
   export default {
-    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin]
+    name: 'vfbDatepicker',
+    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin],
+    computed: {
+      // It's important to set initial value to null when no option selected,
+      // because the placeholder is not visible when the value different from null
+      modelValue: {
+        get () {
+          return this._model || null
+        },
+        set (newValue) {
+          this.model[this.field.key] = newValue || ''
+        }
+      },
+    },
+    methods: {
+      handleInputNativeEvent (event) {
+        const date = new Date(event.target.value)
+        if (!date.getTime()) this.model[this.field.key] = ''
+      },
+      handleActiveChangeEvent (event) {
+        this.callCustomEventHandler('activeChange', args)
+      }
+    }
   }
 </script>
-
