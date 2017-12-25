@@ -1,10 +1,15 @@
-import { wrapElement } from '@/utils'
+import { removeIntermediateElement, wrapElement } from '@/utils'
 
 export default {
+  data () {
+    return {
+      defaultWrapper: '<div class="block"></div>'
+    }
+  },
   mounted () {
-    const wrapper = this.getPropertyValue(this.field, 'wrapper')
-    if (typeof wrapper === 'string' && wrapper) {
-      this.$el.childNodes.forEach(node => wrapElement(node, wrapper))
+    if (this.$children.length) {
+      const wrapper = wrapElement(this.$el, this.defaultWrapper)
+      removeIntermediateElement(wrapper, this.$el)
     }
   }
 }

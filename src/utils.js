@@ -21,9 +21,34 @@ export const wrapComponent = function (component, wrapper) {
 }
 
 export const wrapElement = function (element, wrapper) {
-  const template = document.createElement('div')
-  template.innerHTML = wrapper
-  const wrapperEl = template.firstChild
-  element.parentNode.insertBefore(wrapperEl, element)
-  wrapperEl.appendChild(element)
+  const wrapperElement = document
+    .createRange()
+    .createContextualFragment(wrapper)
+    .firstChild
+  element.parentNode.insertBefore(wrapperElement, element)
+  wrapperElement.appendChild(element)
+  return wrapperElement
+}
+
+export const classNameToCSSSelector = (className) => {
+  const classes = className.toString().split(' ').filter(x => x)
+  if (classes.length) return `.${classes.join('.')}`
+}
+
+export const idToCSSSelector = (id) => {
+  if (id) return `#${id.toString()}`
+}
+
+export const getCSSSelector = function (node) {
+  const querySelector = idToCSSSelector(node.id) ||
+    classNameToCSSSelector(node.className) ||
+    node.tagName.toLowerCase()
+  return querySelector
+}
+
+export const removeIntermediateElement = function (parent, child) {
+  const selector = getCSSSelector(child)
+  const node = parent.querySelector(selector)
+  while (node.hasChildNodes()) parent.appendChild(node.firstChild)
+  node.remove()
 }

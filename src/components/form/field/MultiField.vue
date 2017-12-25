@@ -5,21 +5,16 @@
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import VFBField from './Field.vue'
+  import { removeIntermediateElement } from '@/utils'
 
   export default {
     name: 'vfbMultiFieldWrapper',
     extends: VFBField,
-    data () {
-      return {
-        defaultWrapper: '<div class="field has-addons"></div>'
-      }
-    },
     mounted () {
-      const wrapper = this.getPropertyValue(this.field, 'wrapper', this.defaultWrapper)
-      this.$el.querySelector()
-      if (typeof wrapper === 'string' && wrapper) {
-        while (wrapper.hasChildNodes()) field.appendChild(wrapper.firstChild)
-        wrapper.remove()
+      // Move all elements of the child component into the parent node
+      // then remove an intermediate node for the correct work of the component
+      if (this.$children.length) {
+        removeIntermediateElement(this.$el, this.$children[0].$el)
       }
     }
   }
