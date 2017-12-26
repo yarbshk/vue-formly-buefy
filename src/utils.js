@@ -20,35 +20,16 @@ export const wrapComponent = function (component, wrapper) {
   }
 }
 
-export const wrapElement = function (element, wrapper) {
-  const wrapperElement = document
+export const createDocumentFragment = function (fragment, isRootNode = false) {
+  const documentFragment = document
     .createRange()
-    .createContextualFragment(wrapper)
-    .firstChild
+    .createContextualFragment(fragment)
+  return isRootNode ? documentFragment.firstChild : documentFragment
+}
+
+export const wrapElement = function (element, wrapper) {
+  const wrapperElement = createDocumentFragment(wrapper, true)
   element.parentNode.insertBefore(wrapperElement, element)
   wrapperElement.appendChild(element)
   return wrapperElement
-}
-
-export const classNameToCSSSelector = (className) => {
-  const classes = className.toString().split(' ').filter(x => x)
-  if (classes.length) return `.${classes.join('.')}`
-}
-
-export const idToCSSSelector = (id) => {
-  if (id) return `#${id.toString()}`
-}
-
-export const getCSSSelector = function (node) {
-  const querySelector = idToCSSSelector(node.id) ||
-    classNameToCSSSelector(node.className) ||
-    node.tagName.toLowerCase()
-  return querySelector
-}
-
-export const removeIntermediateElement = function (parent, child) {
-  const selector = getCSSSelector(child)
-  const node = parent.querySelector(selector)
-  while (node.hasChildNodes()) parent.appendChild(node.firstChild)
-  node.remove()
 }
