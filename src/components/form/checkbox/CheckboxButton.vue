@@ -1,14 +1,10 @@
 <template>
-  <div class="field has-addons">
-    <b-checkbox-button v-for="(option, index) in options"
-                       v-bind="Object.assign({}, option.properties, properties)"
-                       v-model="model[field.key]"
-                       :key="index"
-                       :native-value="getOptionAttr(option, 'value', option.text)">
-      <b-icon v-if="option.icon" :icon="option.icon"></b-icon>
-      <span>{{ getOptionAttr(option, 'text') }}</span>
-    </b-checkbox-button>
-  </div>
+  <b-checkbox-button v-bind="properties"
+                     v-model="model[field.key]"
+                     :native-value="nativeValue">
+    <b-icon v-if="to.icon" :icon="to.icon"></b-icon>
+    <span>{{ label }}</span>
+  </b-checkbox-button>
 </template>
 
 <script>
@@ -21,6 +17,19 @@
 
   export default {
     name: 'vfbCheckboxButton',
-    mixins: [BaseFormlyFieldMixin, SelectricFieldMixin]
+    mixins: [BaseFormlyFieldMixin, SelectricFieldMixin],
+    data () {
+      return {
+        canWrapChildNodes: true
+      }
+    },
+    computed: {
+      label () {
+        return this.getTemplateOption('label', this.to.toString())
+      },
+      nativeValue () {
+        return this.getTemplateOption('properties/native-value', this.label)
+      }
+    }
   }
 </script>
