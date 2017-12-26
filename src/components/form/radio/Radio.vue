@@ -1,14 +1,10 @@
 <template>
-  <div class="block">
-    <b-radio v-for="(option, index) in options"
-             v-bind="option.properties"
-             v-model="model[field.key]"
-             :key="index"
-             :native-value="getOptionAttr(option, 'value', option.text)"
-             @input="handleInputEvent">
-      {{ getOptionAttr(option, 'text') }}
-    </b-radio>
-  </div>
+  <b-radio v-bind="properties"
+           v-model="model[field.key]"
+           :native-value="nativeValue"
+           @input="handleInputEvent">
+    {{ to.label }}
+  </b-radio>
 </template>
 
 <script>
@@ -17,14 +13,15 @@
    * {@link https://buefy.github.io/#/documentation/radio}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import RequiredFieldMixin from 'src/mixins/required-field.mixin'
   import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
     name: 'vfbRadio',
-    mixins: [BaseFormlyFieldMixin, SelectricFieldMixin],
+    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin, SelectricFieldMixin],
     data () {
       return {
-        canWrapChildren: true
+        canWrapChildNodes: true
       }
     }
   }

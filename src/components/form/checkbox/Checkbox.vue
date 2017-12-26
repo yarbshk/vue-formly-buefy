@@ -12,10 +12,17 @@
    * {@link https://buefy.github.io/#/documentation/checkbox}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
+  import RequiredFieldMixin from 'src/mixins/required-field.mixin'
+  import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
 
   export default {
     name: 'vfbCheckbox',
-    mixins: [BaseFormlyFieldMixin],
+    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin, SelectricFieldMixin],
+    data () {
+      return {
+        canWrapChildNodes: true
+      }
+    },
     computed: {
       label () {
         return this.getTemplateOption('label', this._model.toString())

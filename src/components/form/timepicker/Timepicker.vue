@@ -8,8 +8,8 @@
 
 <script>
   /**
-   * Implements an timepicker field.
-   * Look at API section (the link below) for the reference
+   * An input with a simple dropdown/modal for selecting a time, 
+   * uses native timepicker for mobile.
    * {@link https://buefy.github.io/#/documentation/timepicker}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'

@@ -11,8 +11,7 @@
 
 <script>
   /**
-   * Implements an autocomplete field (input with select).
-   * Look at API section (the link below) for the reference
+   * Extended input that provide suggestions while the user types.
    * {@link https://buefy.github.io/#/documentation/autocomplete}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'

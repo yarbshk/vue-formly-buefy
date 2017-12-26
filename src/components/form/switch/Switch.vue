@@ -8,8 +8,7 @@
 
 <script>
   /**
-   * Implements usual input field of type text (including textarea)
-   * Look at API section (the link below) for the reference
+   * Switch between two opposing states.
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'

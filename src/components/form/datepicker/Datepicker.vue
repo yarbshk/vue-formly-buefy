@@ -1,11 +1,9 @@
 <template>
   <b-datepicker v-bind="properties"
                 v-model="modelValue"
-                @blur="handleBlurEvent"
-                @focus="handleFocusEvent"
-                @input="handleInputEvent"
-                @input.native="handleInputNativeEvent"
-                @active-change="handleActiveChangeEvent">
+                @blur="onBlur"
+                @focus="onFocus"
+                @input.native="handleInputNativeEvent">
   </b-datepicker>
 </template>
 
@@ -36,10 +34,7 @@
     methods: {
       handleInputNativeEvent (event) {
         const date = new Date(event.target.value)
-        if (!date.getTime()) this.model[this.field.key] = ''
-      },
-      handleActiveChangeEvent (event) {
-        this.callCustomEventHandler('activeChange', args)
+        if (!date.getTime()) this.modelValue = null
       }
     }
   }

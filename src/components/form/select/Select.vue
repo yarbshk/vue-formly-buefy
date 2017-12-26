@@ -1,17 +1,17 @@
 <template>
   <b-select v-bind="properties"
-            v-model="modelValue"
+            v-model="value"
             @blur="handleBlurEvent"
             @focus="handleFocusEvent"
             @input="handleInputEvent">
     <template v-if="options.length">
       <!-- Render an optgroup select -->
-      <template v-if="templateType === templateTypes.COMBINED">
+      <template v-if="templateType === templateTypes.combined">
         <optgroup v-for="(optgroup, i) in options"
-                  v-bind:key="i"
+                  :key="i"
                   :label="optgroup.label">
           <option v-for="(option, j) in optgroup.options"
-                  v-bind:key="j"
+                  :key="j"
                   :value="getOptionAttr(option, 'value', option.text)">
             {{ getOptionAttr(option, 'text') }}
           </option>
@@ -20,7 +20,7 @@
       <!-- Render an options select -->
       <template v-else>
         <option v-for="(option, index) in options"
-                v-bind:key="index"
+                :key="index"
                 :value="getOptionAttr(option, 'value', option.text)">
           {{ getOptionAttr(option, 'text') }}
         </option>
@@ -31,29 +31,46 @@
 
 <script>
   /**
-   * Implements a select field (dropdown list with options).
-   * Look at API section (the link below) for the reference
+   * Select an item in a dropdown list.
    * {@link https://buefy.github.io/#/documentation/select}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
-  import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
   import RequiredFieldMixin from 'src/mixins/required-field.mixin'
+  import SelectricFieldMixin from 'src/mixins/selectric-field.mixin'
+
+  const TEMPLATE_TYPES = {
+    plain: 10,
+    combined: 20
+  }
 
   export default {
     name: 'vfbSelect',
-    mixins: [BaseFormlyFieldMixin, SelectricFieldMixin, RequiredFieldMixin],
+    mixins: [BaseFormlyFieldMixin, RequiredFieldMixin, SelectricFieldMixin],
     data () {
       return {
-        templateTypes: {
-          PLAIN: 'plain',
-          COMBINED: 'combined'
-        }
+        templateTypes: TEMPLATE_TYPES
+      }
+    },
+    methods: {
+      /**
+       * Gets value from an option of the select widget.
+       * This is a shortcut function.
+       * @param {*} option
+       * @param {String} key
+       * @param {*} defaultVal
+       */
+      getOptionAttr (option, key, defaultVal = undefined) {
+        return typeof option === 'object'
+          ? key in option
+            ? option[key]
+            : defaultVal
+          : option.toString()
       }
     },
     computed: {
       // It's necessary to set an initial value to null when no option selected,
       // because placeholder is not visible when value different from null
-      modelValue: {
+      value: {
         get () {
           return this._model || null
         },
@@ -61,31 +78,20 @@
           this.model[this.field.key] = newValue
         }
       },
-      templateType () {
-        /**
-         * Define a template type for child nodes of a select.
-         * Templates come in two types:
-         * 1) plain - for options
-         * 2) combined - for optgroups
-         * Follow the link below for the usage guide
-         * {@link https://011.vuejs.org/guide/forms.html#Dynamic_Select_Options}
-         */
-        if (this.options.length) {
-          const obj = this.options[0]
-          if ('label' in obj && 'options' in obj) {
-            return this.templateTypes.COMBINED
-          } else {
-            return this.templateTypes.PLAIN
-          }
-        }
-      }
-    },
-    watch: {
+      options () {
+        return this.getTemplateOption('options', [])
+      },
       /**
-       * Manually set model value when stub value has been changed.
+       * Define a template type for the children of the component.
+       * {@link https://011.vuejs.org/guide/forms.html#Dynamic_Select_Options}
        */
-      modelValue (value) {
-        this.$set(this.model, this.field.key, value)
+      templateType () {
+        if (this.options.length) {
+          const option = Object(this.options[0])
+          return ('label' in option && 'options' in option)
+            ? this.templateTypes.combined
+            : this.templateTypes.plain
+        }
       }
     }
   }

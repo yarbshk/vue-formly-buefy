@@ -9,8 +9,7 @@
 
 <script>
   /**
-   * Implements an input or textarea field.
-   * Look at API section (the link below) for the reference
+   * Get user Input.
    * {@link https://buefy.github.io/#/documentation/field}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'

@@ -13,8 +13,7 @@
 
 <script>
   /**
-   * Implements an taginput field.
-   * Look at API section (the link below) for the reference
+   * A simple tag input field that can have autocomplete functionality.
    * {@link https://buefy.github.io/#/documentation/taginput}
    */
   import BaseFormlyFieldMixin from 'src/mixins/base-formly-field.mixin'
