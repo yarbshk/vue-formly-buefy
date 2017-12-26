@@ -1,10 +1,7 @@
 export default {
-  data () {
-    return {
-      // Extend properties with the required flag
-      properties: {
-        required: this.getField('required')
-      }
-    }
+  created () {
+    const required = this.getField('required')
+    // Extend properties with the required flag
+    if (required && this.properties) this.properties.required = true
   }
 }

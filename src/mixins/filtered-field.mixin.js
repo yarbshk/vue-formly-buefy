@@ -9,7 +9,7 @@ export default {
     getFilteredData (text) {
       const filter = this.getTemplateOption('filter', this.defaultFilter)
       this.userInput = text
-      this.filteredData = this.getTemplateOption('data', []).filter(filter)
+      this.filteredData = this.getTemplateOption('properties/data', []).filter(filter)
     },
     defaultFilter (option) {
       // Extract an option (object property)

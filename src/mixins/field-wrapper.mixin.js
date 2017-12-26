@@ -2,13 +2,13 @@ import BaseFormlyWrapperMixin from './base-formly-wrapper.mixin'
 
 export default {
   mixins: [BaseFormlyWrapperMixin],
-  data () {
-    return {
-      controls: this.getTemplateOption('wrapper/controls', {}),
-      properties: this.getTemplateOption('wrapper/properties', {})
-    }
-  },
   computed: {
+    controls () {
+      return this.getTemplateOption('wrapper/controls', {})
+    },
+    properties () {
+      return this.getTemplateOption('wrapper/properties', {})
+    },
     clearProperties () {
       const [type, message] = this.getValidationState()
       return Object.assign({}, this.properties, { type, message })

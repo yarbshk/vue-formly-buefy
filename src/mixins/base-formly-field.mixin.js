@@ -2,18 +2,10 @@ import BaseFormlyMixin from './base-formly.mixin'
 
 export default {
   mixins: [BaseFormlyMixin],
-  data () {
-    return {
-      properties: this.getTemplateOption('properties', {})
+  computed: {
+    properties () {
+      return this.getTemplateOption('properties', {})
     }
-  },
-  created () {
-    const formField = this._formField
-    // Initialize the form property of the field
-    this.$set(this.form, this.field.key, {
-      '$active': '$active' in formField ? formField.$active : false,
-      '$dirty': '$dirty' in formField ? formField.$dirty : false
-    })
   },
   methods: {
     /**
@@ -59,5 +51,13 @@ export default {
       this.defineDirtyState()
       this.callCustomEventHandler('input', ...args)
     }
+  },
+  created () {
+    const formField = this._formField
+    // Initialize the form property of the field
+    this.$set(this.form, this.field.key, {
+      '$active': '$active' in formField ? formField.$active : false,
+      '$dirty': '$dirty' in formField ? formField.$dirty : false
+    })
   }
 }
