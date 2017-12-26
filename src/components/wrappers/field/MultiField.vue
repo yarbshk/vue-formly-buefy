@@ -1,6 +1,6 @@
 <template>
   <b-field v-bind="clearProperties">
-    <vfb-control v-for="(control, index) in controls.before"
+    <vfb-control v-for="(control, index) in filterControls('before')"
                  :key="index"
                  :options="control.options"
                  :type="control.type">
@@ -13,7 +13,7 @@
                :field="field"
                :to="option">
     </component>
-    <vfb-control v-for="(control, index) in controls.after"
+    <vfb-control v-for="(control, index) in filterControls('after')"
                  :key="index"
                  :options="control.options"
                  :type="control.type">

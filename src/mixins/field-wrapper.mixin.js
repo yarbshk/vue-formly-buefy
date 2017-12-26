@@ -4,7 +4,7 @@ export default {
   mixins: [BaseFormlyWrapperMixin],
   computed: {
     controls () {
-      return this.getTemplateOption('wrapper/controls', {})
+      return this.getTemplateOption('wrapper/controls', [])
     },
     properties () {
       return this.getTemplateOption('wrapper/properties', {})
@@ -23,6 +23,14 @@ export default {
       return Object.values(this._formErrors).filter(x => x).length
         ? ['is-danger', this.getErrorMessage()]
         : ['is-success', this.properties.message]
+    },
+    /**
+     * Filter controls of the wrapper by position.
+     * @param {String} position
+     */
+    filterControls (position) {
+      const filter = control => control.position === position
+      return this.controls.filter(filter)
     }
   }
 }
