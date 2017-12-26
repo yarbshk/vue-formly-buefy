@@ -1,21 +1,40 @@
+<template>
+  <b-field v-bind="clearProperties">
+    <vfb-control v-for="(control, index) in controls.before"
+                 :key="index"
+                 :options="control.options"
+                 :type="control.type">
+    </vfb-control>
+    <component v-for="(option, index) in to.options"
+               :key="index"
+               :is="wrappedComponent"
+               :form.sync="form"
+               :model="model"
+               :field="field"
+               :to="option">
+    </component>
+    <vfb-control v-for="(control, index) in controls.after"
+                 :key="index"
+                 :options="control.options"
+                 :type="control.type">
+    </vfb-control>
+  </b-field>
+</template>
+
 <script>
   /**
    * The wrapper for components with multiple children (e.g. CheckboxButton, Radio).
    * Add additional functionality to foregoing components.
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import VFBField from './Field.vue'
-  import { removeIntermediateElement } from '@/utils'
+  import FieldWrapperMixin from 'src/mixins/field-wrapper.mixin'
+  import VFBControl from './Control.vue'
 
   export default {
     name: 'vfbMultiFieldWrapper',
-    extends: VFBField,
-    mounted () {
-      // Move all elements of the child component into the parent node
-      // then remove an intermediate node for the correct work of the component
-      if (this.$children.length) {
-        removeIntermediateElement(this.$el, this.$children[0].$el)
-      }
+    mixins: [FieldWrapperMixin],
+    components: {
+      [VFBControl.name]: VFBControl
     }
   }
 </script>
