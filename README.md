@@ -11,7 +11,7 @@ The plugin was developed and tested for the following packages:
 - [Vue Formly (2.5.x)](https://github.com/formly-js/vue-formly)
 - [Buefy (0.6.x)](https://github.com/rafaelpimpa/buefy)
 
-## Installation
+## Getting started
 First of all install necessary dependencies (see above) and **vue-formly-buefy** itself:
 ```bash
 $ npm i vue-formly-buefy
