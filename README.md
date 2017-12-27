@@ -1,58 +1,54 @@
 # vue-formly-buefy
-Vue.js plugin that covers the [Buefy](https://buefy.github.io) form fields for [Formly](https://github.com/formly-js/vue-formly). Allows you to combine simplicity of Formly form builder, lightness of Buefy form components and impeccability of [Bulma](http://bulma.io/) design.
-- **Fully-featured.** All Buefy form components are covered (**Input**, **Select**, **Autocomplete**, **Checkbox**, **Radio**, **Switch**, **Upload** and **Datepicker**). Create form elements of all native `input` types + `textarea`.
-- **Well-judged.** Wrapper elements now accessible (**Field**). Wrap Input, Select and Autocomplete form components to increase its functionality (`.controls` elements, validation state indicator, addons available).
-- **Straightforward.** Simple is better than complex.
+Vue.js plugin that covers the [Buefy](https://buefy.github.io) form fields for [Formly](https://github.com/formly-js/vue-formly). It lets you to validate input data in your forms. The plugin combine simplicity of the Formly form builder, lightness of the Buefy form fields and impeccability of the [Bulma](http://bulma.io/) design.
+
+Brief description of the most meaningful features:
+- **Completely covered.** All Buefy form fields are covered (Autocomplete, Checkbox, Datepicker, Input, Radio, Select, Switch, Taginput, Timepicker and Upload).
+- **Extensible.** Wrap the vast majority of form elements to increase its functionality (data validation, field controls, grouping and many more are available).
+- **Straightforward.** Simple and standardized API.
 
 ## Requirements
-Depends on the following plugins:
-- [Vue Formly](https://github.com/formly-js/vue-formly)
-- [Buefy](https://github.com/rafaelpimpa/buefy)
+The plugin was developed and tested for the following packages:
+- [Vue Formly (2.5.x)](https://github.com/formly-js/vue-formly)
+- [Buefy (0.6.x)](https://github.com/rafaelpimpa/buefy)
 
 ## Installation
 First of all install necessary dependencies (see above) and **vue-formly-buefy** itself:
 ```bash
-$ yarn add vue-formly-buefy
+$ npm i vue-formly-buefy
 ```
 
 After, integrate the plugin with your project:
 ```javascript
-import Vue from 'vue'
 import Buefy from 'buefy'
+import Vue from 'vue'
 import VueFormly from 'vue-formly'
 import VueFormlyBuefy from 'vue-formly-buefy'
 
 Vue.use(Buefy)
 Vue.use(VueFormly)
-Vue.use(VueFormlyBuefy) // Include the plugin after Vue Formly
+Vue.use(VueFormlyBuefy) // Plug in directly after Vue Formly
 
 new Vue({
   el: '#app'
 })
-````
-...or just add a script directly to the document:
-```html
-<script src="/path_to_assets/vue-formly-buefy/dist/vue-formly-buefy.min.js"></script>
 ```
 That's all :D
 
 ## Documentation
 Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
 
-## Examples
-Simple example of creating an input type with a static button (span):
+## Getting started
+Look at the following example of the **wrapped input with a span control**:
 ```html
-<!-- InputWithStaticSpan.vue -->
 <template>
   <formly-form :form="form" :model="model" :fields="fields"></formly-form>
 </template>
 
 <script>
-  // Import a span plain control
-  import { Span } from 'vue-formly-buefy/dist/plain-controls'
+  // Import the span control from the library
+  import { Span } from 'vue-formly-buefy/dist/controls'
 
   export default {
-    // Set initial values for Formly form
     data () {
       return {
         form: {},
@@ -62,25 +58,24 @@ Simple example of creating an input type with a static button (span):
         fields: [
           {
             key: 'email',
-            type: 'input-with-field',         // Easy wrapping with a field wrapper
+            type: 'input-with-field',  // Use a wrapper to extend functionality
             templateOptions: {
-              properties: {                   
-                'placeholder': 'Your email'   // It's recommended to use quotes and kebab-case
+              properties: {            // Keep configuration of the element              
+                'placeholder': 'Your email'
               },
-              wrapper: {                      // Configuration object of the field wrapper
-                controls: {
-                  after: [
-                    {
-                      type: Span,             // Use the Span component as a field control
-                      options: {              // Configuration object of the field control
-                        label: '@gmail.com',
-                        properties: {
-                          'class': 'button is-static'
-                        }
+              wrapper: {               // Keep configuration of the wrapper
+                controls: [
+                  {
+                    type: Span,        // Use the Span component as a control
+                    position: 'after',
+                    options: {         // Keep configuration of the control
+                      label: '@gmail.com',
+                      properties: {
+                        'class': 'button is-static'
                       }
                     }
-                  ]
-                }
+                  }
+                ]
               }
             }
           }
@@ -90,24 +85,16 @@ Simple example of creating an input type with a static button (span):
   }
 </script>
 ```
-The code above will generate the following Buefy markup:
+The code above will generate the following Buefy markup (then Vue.js will have compiled this markup to HTML as expected):
 ```html
-<!-- index.html -->
-...
 <b-field>
     <b-input placeholder="Your email"></b-input>
     <div class="control">
         <span class="button is-static">@gmail.com</span>
     </div>
 </b-field>
-...
 ```
-You can find [more examples here](https://github.com/yarbshk/vue-formly-buefy-examples/).
-
-## Status
-The plugin passed the beta testing stage and now available for using in the **production** environment.
-
-I'll probably add more functionality later. This is what I need right now.
+Search for **more examples** [here](https://github.com/yarbshk/vue-formly-buefy-examples/).
 
 ## Copyright and License
 Copyright (c) 2017 Yuriy Rabeshko. Code released under the MIT license.

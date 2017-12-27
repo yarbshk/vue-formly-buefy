@@ -20,10 +20,16 @@ export const wrapComponent = function (component, wrapper) {
   }
 }
 
+export const createDocumentFragment = function (fragment, isRootNode = false) {
+  const documentFragment = document
+    .createRange()
+    .createContextualFragment(fragment)
+  return isRootNode ? documentFragment.firstChild : documentFragment
+}
+
 export const wrapElement = function (element, wrapper) {
-  const template = document.createElement('div')
-  template.innerHTML = wrapper
-  const wrapperEl = template.firstChild
-  element.parentNode.insertBefore(wrapperEl, element)
-  wrapperEl.appendChild(element)
+  const wrapperElement = createDocumentFragment(wrapper, true)
+  element.parentNode.insertBefore(wrapperElement, element)
+  wrapperElement.appendChild(element)
+  return wrapperElement
 }

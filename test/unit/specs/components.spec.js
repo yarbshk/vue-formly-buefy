@@ -21,7 +21,7 @@ describe('Field.Wrapper', function () {
   let vm = null
 
   beforeEach(function () {
-    vm = mount(Field.Wrapper, {
+    vm = mount(Field.Default, {
       props: Object.assign({}, props(), {
         wrappedComponent: Input,
         form: {

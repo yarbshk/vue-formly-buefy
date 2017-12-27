@@ -6,34 +6,32 @@ const banner = 'VueFormlyBuefy v' + version + '\n' +
                '(c) 2017 Yuriy Rabeshko\n' +
                'Released under the MIT License.'
 
-const common = {
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      }
-    ]
+const rules = [
+  {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: ['babel-loader', 'eslint-loader']
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
-    }),
-    new webpack.BannerPlugin({
-      banner: banner
-    })
-  ],
-  resolve: {
-    alias: {
-      src: path.resolve(__dirname, 'src')
+  {
+    test: /\.vue$/,
+    loader: 'vue-loader'
+  }
+]
+
+const plugins = [
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
+  }),
+  new webpack.BannerPlugin({
+    banner: banner
+  })
+]
+
+const resolve = {
+  alias: {
+    '@': path.resolve(__dirname, 'src')
   }
 }
 
@@ -46,16 +44,16 @@ module.exports = [
       library: 'VueFormlyBuefy',
       libraryTarget: 'umd'
     },
-    module: common.module,
+    module: { rules },
     plugins: [
-      ...common.plugins,
+      ...plugins,
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         compress: false,
         mangle: false
       })
     ],
-    resolve: common.resolve
+    resolve
   },
   {
     entry: path.resolve(__dirname, 'src/index'),
@@ -65,29 +63,29 @@ module.exports = [
       library: 'VueFormlyBuefy',
       libraryTarget: 'umd'
     },
-    module: common.module,
+    module: { rules },
     plugins: [
-      ...common.plugins,
+      ...plugins,
       new webpack.optimize.UglifyJsPlugin({
         sourceMap: true,
         warnings: false
       })
     ],
-    resolve: common.resolve
+    resolve
   },
   {
-    entry: path.resolve(__dirname, 'src/plain-controls'),
+    entry: path.resolve(__dirname, 'src/controls'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'plain-controls.js',
-      library: 'VfbPlainControls',
+      filename: 'controls.js',
+      library: 'VFBControls',
       libraryTarget: 'umd'
     },
-    module: common.module,
+    module: { rules },
     plugins: [
-      ...common.plugins,
+      ...plugins,
       new webpack.optimize.UglifyJsPlugin()
     ],
-    resolve: common.resolve
+    resolve
   }
 ]
