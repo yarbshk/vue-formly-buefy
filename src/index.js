@@ -1,15 +1,15 @@
 import { addTypes, wrapComponent } from './utils'
 
-import Autocomplete from './components/form/autocomplete'
-import Datepicker from './components/form/datepicker'
-import Input from './components/form/input'
-import Checkbox from './components/form/checkbox'
-import Radio from './components/form/radio'
-import Select from './components/form/select'
-import Switch from './components/form/switch'
-import Taginput from './components/form/taginput'
-import Timepicker from './components/form/timepicker'
-import Upload from './components/form/upload'
+import Autocomplete from './components/fields/autocomplete'
+import Datepicker from './components/fields/datepicker'
+import Input from './components/fields/input'
+import Checkbox from './components/fields/checkbox'
+import Radio from './components/fields/radio'
+import Select from './components/fields/select'
+import Switch from './components/fields/switch'
+import Taginput from './components/fields/taginput'
+import Timepicker from './components/fields/timepicker'
+import Upload from './components/fields/upload'
 
 import MultiBlock from './components/wrappers/block'
 import Field from './components/wrappers/field'
@@ -38,14 +38,10 @@ const VueFormlyBuefy = {
       'taginput-with-field': wrapComponent(Taginput, Field.Default),
       'timepicker': Timepicker,
       'timepicker-with-field': wrapComponent(Timepicker, Field.Default),
-      'upload': Upload.Default,
-      'upload-drag-drop': Upload.DragDrop
+      'upload': Upload,
+      'upload-with-field': wrapComponent(Upload, Field.Default)
     })
   }
-}
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(VueFormlyBuefy)
 }
 
 export default VueFormlyBuefy
