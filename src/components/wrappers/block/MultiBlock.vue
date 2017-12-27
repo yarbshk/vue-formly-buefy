@@ -15,7 +15,7 @@
   /**
    * The wrapper for components with multiple children (e.g. CheckboxButton, Radio).
    */
-  import BaseFormlyWrapperMixin from '@/mixins/base-formly-wrapper.mixin'
+  import BaseFormlyWrapperMixin from '@/mixins/base-formly-wrapper'
 
   export default {
     mixins: [BaseFormlyWrapperMixin],

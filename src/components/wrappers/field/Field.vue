@@ -25,7 +25,7 @@
    * Adds additional functionality to foregoing components.
    * {@link https://buefy.github.io/#/documentation/field}
    */
-  import FieldWrapperMixin from 'src/mixins/field-wrapper.mixin'
+  import FieldWrapperMixin from '@/mixins/wrappers/field'
   import VFBControl from './Control.vue'
 
   export default {
