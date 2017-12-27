@@ -34,9 +34,6 @@ new Vue({
 ```
 That's all :D
 
-## Documentation
-Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
-
 ## Getting started
 Look at the following example of the **wrapped input with a span control**:
 ```html
@@ -95,6 +92,9 @@ The code above will generate the following Buefy markup (then Vue.js will have c
 </b-field>
 ```
 Search for **more examples** [here](https://github.com/yarbshk/vue-formly-buefy-examples/).
+
+## Documentation
+Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
 
 ## Copyright and License
 Copyright (c) 2017 Yuriy Rabeshko. Code released under the MIT license.
