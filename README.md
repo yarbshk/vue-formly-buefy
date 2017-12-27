@@ -11,7 +11,7 @@ The plugin was developed and tested for the following packages:
 - [Vue Formly (2.5.x)](https://github.com/formly-js/vue-formly)
 - [Buefy (0.6.x)](https://github.com/rafaelpimpa/buefy)
 
-## Getting started
+## Installation
 First of all install necessary dependencies (see above) and **vue-formly-buefy** itself:
 ```bash
 $ npm i vue-formly-buefy
@@ -37,7 +37,7 @@ That's all :D
 ## Documentation
 Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
 
-## Examples
+## Getting started
 Look at the following example of the **wrapped input with a span control**:
 ```html
 <template>
