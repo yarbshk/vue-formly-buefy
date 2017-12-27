@@ -1,4 +1,4 @@
-import { wrapElement } from 'src/utils'
+import { wrapElement } from '@/utils'
 
 export default {
   data () {

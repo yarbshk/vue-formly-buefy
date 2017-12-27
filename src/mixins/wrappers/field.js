@@ -1,4 +1,4 @@
-import BaseFormlyWrapperMixin from './base-formly-wrapper.mixin'
+import BaseFormlyWrapperMixin from '@/mixins/base-formly-wrapper'
 
 export default {
   mixins: [BaseFormlyWrapperMixin],
