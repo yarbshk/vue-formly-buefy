@@ -46,4 +46,8 @@ const VueFormlyBuefy = {
   }
 }
 
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(VueFormlyBuefy)
+}
+
 export default VueFormlyBuefy

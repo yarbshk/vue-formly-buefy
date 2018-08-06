@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple way to validate input data in your forms.",
   "keywords": [
     "vue",
@@ -15,7 +15,7 @@
     "url": "https://github.com/yarbshk/vue-formly-buefy.git/issues"
   },
   "license": "MIT",
-  "main": "dist/vue-formly-buefy.js",
+  "main": "dist/vue-formly-buefy.min.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start",
     "build": "./node_modules/.bin/webpack"

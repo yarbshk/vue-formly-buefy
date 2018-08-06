@@ -40,25 +40,6 @@ module.exports = [
     entry: path.resolve(__dirname, 'src/index'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'vue-formly-buefy.js',
-      library: 'VueFormlyBuefy',
-      libraryTarget: 'umd'
-    },
-    module: { rules },
-    plugins: [
-      ...plugins,
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: false,
-        mangle: false
-      })
-    ],
-    resolve
-  },
-  {
-    entry: path.resolve(__dirname, 'src/index'),
-    output: {
-      path: path.resolve(__dirname, 'dist'),
       filename: 'vue-formly-buefy.min.js',
       library: 'VueFormlyBuefy',
       libraryTarget: 'umd'
@@ -77,8 +58,8 @@ module.exports = [
     entry: path.resolve(__dirname, 'src/controls'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'controls.js',
-      library: 'VFBControls',
+      filename: 'vue-formly-buefy-controls.min.js',
+      library: 'VueFormlyBuefyControls',
       libraryTarget: 'umd'
     },
     module: { rules },
