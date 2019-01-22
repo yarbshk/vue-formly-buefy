@@ -97,4 +97,4 @@ Search for **more examples** [here](https://github.com/yarbshk/vue-formly-buefy-
 Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
 
 ## Copyright and License
-Copyright (c) 2017-2018 Yuriy Rabeshko. Code released under the MIT license.
+Copyright (c) 2017-2019 Yuriy Rabeshko. Code released under the MIT license.
