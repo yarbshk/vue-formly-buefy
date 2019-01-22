@@ -72,7 +72,8 @@
       // because placeholder is not visible when value different from null
       value: {
         get () {
-          return this._model || null
+          // Fix an issue #3 (https://github.com/yarbshk/vue-formly-buefy/issues/3)
+          return (this._model === 0 || !!this._model) ? this._model : null
         },
         set (newValue) {
           this.model[this.field.key] = newValue
