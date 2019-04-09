@@ -120,7 +120,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#autocomplete)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#autocomplete)
 - [Buefy docs - Autocomplete](https://buefy.github.io/documentation/autocomplete)
 
 ***
@@ -176,7 +176,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#checkbox)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#checkbox)
 - [Buefy docs - Checkbox](https://buefy.github.io/documentation/checkbox)
 
 ***
@@ -208,7 +208,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#datepicker)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#datepicker)
 - [Buefy docs - Datepicker](https://buefy.github.io/documentation/datepicker)
 
 ***
@@ -240,7 +240,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#input)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#input)
 - [Buefy docs - Input](https://buefy.github.io/documentation/input)
 
 ***
@@ -295,7 +295,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#radio)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#radio)
 - [Buefy docs - Radio](https://buefy.github.io/documentation/radio)
 
 ***
@@ -331,7 +331,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#select)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#select)
 - [Buefy docs - Select](https://buefy.github.io/documentation/select)
 
 ***
@@ -350,7 +350,7 @@ You already know **where** configuration properties should lay. The following st
 - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#switch)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#switch)
 - [Buefy docs - Switch](https://buefy.github.io/documentation/switch)
 
 ***
@@ -382,7 +382,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#taginput)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#taginput)
 - [Buefy docs - Taginput](https://buefy.github.io/documentation/taginput)
 
 ***
@@ -412,7 +412,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#timepicker)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#timepicker)
 - [Buefy docs - Timepicker](https://buefy.github.io/documentation/timepicker)
 
 ***
@@ -446,7 +446,7 @@ You already know **where** configuration properties should lay. The following st
   - properties: `Object`
 
 #### Reference
-- [Basic example](https://yarbshk.github.io/vue-formly-buefy/#upload)
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#upload)
 - [Buefy docs - Upload](https://buefy.github.io/documentation/upload)
 
 ## 2. Wrappers
@@ -463,8 +463,8 @@ There are a few wrappers (Block, Field). To use wrapper just add a suffix `-with
   - properties: `Object`
 
 #### Reference
-- [Basic example 1](https://yarbshk.github.io/vue-formly-buefy/#checkbox)
-- [Basic example 2](https://yarbshk.github.io/vue-formly-buefy/#radio)
+- [Basic example 1](https://yarbshk.github.io/vue-formly-buefy/samples/#checkbox)
+- [Basic example 2](https://yarbshk.github.io/vue-formly-buefy/samples/#radio)
 - [Source code](https://github.com/yarbshk/vue-formly-buefy/blob/master/src/components/wrappers/block)
 
 ### Field
@@ -510,6 +510,6 @@ There are a few wrappers (Block, Field). To use wrapper just add a suffix `-with
 
 #### Reference
 - [Basic example 1](https://github.com/yarbshk/vue-formly-buefy#getting-started)
-- [Basic example 2](https://yarbshk.github.io/vue-formly-buefy/#input)
-- [Basic example 3](https://yarbshk.github.io/vue-formly-buefy/#upload)
+- [Basic example 2](https://yarbshk.github.io/vue-formly-buefy/samples/#input)
+- [Basic example 3](https://yarbshk.github.io/vue-formly-buefy/samples/#upload)
 - [Source code](https://github.com/yarbshk/vue-formly-buefy/tree/master/src/components/controls)
