@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The vue-formly-buefy plugin - Examples</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.1.19/css/materialdesignicons.min.css">  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="dist/app.bundle.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <section class="hero is-medium is-primary is-bold">
+        <div class="hero-head">
+          <div class="nav">
+            <div class="container">
+              <div class="nav-left">
+                <a class="nav-item" href="https://github.com/yarbshk/vue-formly-buefy">
+                  <b-icon icon="github" pack="fa"></b-icon>
+                  <span style="margin-left: 3px;">Home</span>
+                </a>
+                <a class="nav-item" href="https://github.com/yarbshk/vue-formly-buefy/wiki">
+                  Documentation
+                </a>
+                <a class="nav-item is-active" href="/">
+                  Examples
+                </a>
+                <a class="nav-item" href="https://github.com/yarbshk/vue-formly-buefy/issues">
+                  Issues
+                </a>
+              </div>
+              <div class="nav-right nav-menu">
+                <span class="nav-item">
+                  <a class="button is-primary is-inverted" href="https://github.com/yarbshk/vue-formly-buefy/archive/master.zip">
+                    <b-icon icon="download"></b-icon>
+                    <span>Download</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              vue-formly-buefy
+            </h1>
+            <h2 class="subtitle">
+              Simple way to <strong>validate input data</strong> in your forms.
+            </h2>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-1 is-spaced">Examples</h1>
+        <div class="content is-medium">
+          <p>Interact with page elements below to test the plugin in action.</p>
+        </div>
+        <hr>
+        <sample-block id="autocomplete" title="Autocomplete" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/AutocompleteForm.vue">
+          <autocomplete-form>
+            <p>Extended input that provide suggestions while the user types. Use with Field <em>(autocomplete-with-field)</em> to access all functionalities.</p>
+          </autocomplete-form>
+        </sample-block>
+        <hr>
+        <sample-block id="checkbox" title="Checkbox" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/CheckboxForm.vue">
+          <checkbox-form>
+            <p>Permits the user to make a binary choice <em>(also accept grouping)</em>.</p>
+          </checkbox-form>
+        </sample-block>
+        <hr>
+        <sample-block id="datepicker" title="Datepicker" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/DatepickerForm.vue">
+          <datepicker-form>
+              <p>An input with a simple dropdown/modal for selecting a date, uses native datepicker for mobile.</p>
+          </datepicker-form>
+        </sample-block>
+        <hr>
+        <sample-block id="input" title="Input" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/InputForm.vue">
+          <input-form>
+            <p>Get user Input. Use with Field <em>(input-with-field)</em> to access all functionalities.</p>
+          </input-form>
+        </sample-block>
+        <hr>
+        <sample-block id="radio" title="Radio" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/RadioForm.vue">
+          <radio-form>
+            <p>Select an option from a set.</p>
+          </radio-form>
+        </sample-block>
+        <hr>
+        <sample-block id="select" title="Select" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/SelectForm.vue">
+          <select-form>
+            <p>Select an item in a dropdown list. Use with Field <em>(select-with-field)</em> to access all functionalities.</p>
+          </select-form>
+        </sample-block>
+        <hr>
+        <sample-block id="switch" title="Switch" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/SwitchForm.vue">
+          <switch-form>
+            <p>Switch between two opposing states.</p>
+          </switch-form>
+        </sample-block>
+        <hr>
+        <sample-block id="taginput" title="Taginput" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/TaginputForm.vue">
+          <taginput-form>
+            <p>A simple tag input field that can have autocomplete functionality.</p>
+          </taginput-form>
+        </sample-block>
+        <hr>
+        <sample-block id="timepicker" title="Timepicker" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/TimepickerForm.vue">
+          <timepicker-form>
+            <p>An input with a simple dropdown/modal for selecting a time, uses native timepicker for mobile.</p>
+          </timepicker-form>
+        </sample-block>
+        <hr>
+        <sample-block id="upload" title="Upload" source-link="https://github.com/yarbshk/vue-formly-buefy/blob/master/samples/src/components/forms/UploadForm.vue">
+          <upload-form>
+            <p>Upload one or more files.</p>
+          </upload-form>
+        </sample-block>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            Developed by <a href="https://github.com/yarbshk">Yuriy Rabeshko</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+          </p>
+          <p>
+            <a href="https://github.com/yarbshk/vue-formly-buefy">
+              <b-icon icon="github" pack="fa"></b-icon>
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="dist/app.bundle.js"></script>
+</body>
+</html>

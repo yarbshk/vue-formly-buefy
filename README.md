@@ -91,10 +91,10 @@ The code above will generate the following Buefy markup (then Vue.js will have c
     </div>
 </b-field>
 ```
-Search for **more examples** [here](https://github.com/yarbshk/vue-formly-buefy-examples/).
+Search for **more examples** [here](https://github.com/yarbshk/vue-formly-buefy/tree/master/samples).
 
 ## Documentation
 Check [wiki section](https://github.com/yarbshk/vue-formly-buefy/wiki) of this repo for detailed API explanation.
 
 ## Copyright and License
-Copyright (c) 2017-2019 Yuriy Rabeshko. Code released under the MIT license.
+Copyright (c) 2017-2019 [Yurii Rabeshko](https://twitter.com/yarbshk). Code released under the MIT license.

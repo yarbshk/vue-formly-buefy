@@ -1,0 +1,39 @@
+{
+  "name": "vue-formly-buefy-samples",
+  "version": "0.3.1",
+  "description": "Just a repo with vue-formly-buefy samples.",
+  "main": "dist/index.html",
+  "repository": "https://github.com/yarbshk/vue-formly-buefy.git",
+  "author": "Yuriy Rabeshko",
+  "license": "MIT",
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server -d -w --hot --output-public-path /dist/ --host 0.0.0.0",
+    "build": "./node_modules/.bin/webpack"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.6.0",
+    "buefy": "^0.6.2",
+    "css-loader": "^0.28.5",
+    "eslint": "^4.5.0",
+    "eslint-config-vue": "^2.0.2",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-vue": "^2.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "url-parse": "^1.1.9",
+    "vue": "^2.4.2",
+    "vue-formly": "^2.4.5",
+    "vue-formly-buefy": "^1.0.2",
+    "vue-loader": "^13.0.2",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}

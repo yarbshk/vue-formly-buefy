@@ -1,0 +1,24 @@
+.title {
+  .anchor-link {
+    word-break: initial;
+    visibility: hidden;
+    margin-left: 10px;
+  }
+
+  &:hover {
+    .anchor-link {
+      visibility: visible;
+    }
+  }
+}
+
+.form {
+  fieldset {
+    border: none !important;
+  }
+}
+
+.code {
+  max-height: 500px;
+  overflow: auto;
+}

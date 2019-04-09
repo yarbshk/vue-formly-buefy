@@ -37,7 +37,7 @@ To **run the project for development** use the following micro guide:
 1. Get local copy of the project.
 2. Be sure that [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and Google Chrome (needs for test) installed.
 3. Kill a process which occupy the `9876` port (needs for test).
-4. Set the `yarn && yarn test` command for the `client` service in the `docker-compose.yml`.
+4. Set the `yarn && yarn test` command for the `node` service in the `docker-compose.yml`.
 5. Open root directory of the project in the terminal and run the `docker-compose up` command.
 
 When work has done properly all npm packages will be install and Karma test server run on the `9876` port.
