@@ -19,7 +19,7 @@ export default {
      * Define the type and message properties for the field.
      */
     getValidationState () {
-      if (!this._formField.$dirty) return [undefined, undefined]
+      if (!this._formField.$dirty) return [undefined, this.properties.initialMessage]
       return Object.values(this._formErrors).filter(x => x).length
         ? ['is-danger', this.getErrorMessage()]
         : ['is-success', this.properties.message]
