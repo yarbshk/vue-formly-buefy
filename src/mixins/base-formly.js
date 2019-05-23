@@ -31,6 +31,7 @@ export default {
      * Gets first readable message from a current errors stack of the field.
      * @param {String} name - The name of a validator function.
      * @returns {String} errorMessage
+     * @deprecated see getFirstValidationErrorMessage()
      */
     getErrorMessage (name) {
       let errorMessage = this._formErrors[name]
@@ -42,6 +43,49 @@ export default {
       }
       return errorMessage
     },
+
+    /**
+     * Get a list of validation results (booleans, and/or error messages)
+     * without special values starting with "$" (e.g. $async_format).
+     * @returns {*[]}
+     */
+    getValidationResults () {
+      return Object.keys(this._formErrors)
+        .filter(k => !k.startsWith('$'))
+        .map(k => this._formErrors[k])
+    },
+
+    /**
+     * Check whether validation errors are present. A boolean with a false
+     * value means that validation passed successfully for an appropriate
+     * validator.
+     * @returns {boolean}
+     */
+    hasValidationErrors () {
+      return !!this.getValidationResults()
+        .filter(v => v)
+        .length
+    },
+
+    /**
+     * Get a first validation error message (note that booleans are ignoring).
+     * @returns {T}
+     */
+    getFirstValidationErrorMessage () {
+      return this.getValidationResults()
+        .filter(v => typeof v === 'string' && v.trim())
+        .shift()
+    },
+
+    /**
+     * Get a user friendly message for the case when all validators successfully
+     * passed the validation process.
+     * @returns {string}
+     */
+    getValidationSuccessMessage () {
+      return this.field.validationSuccessMessage
+    },
+
     /**
      * Gets a native or default value of an object by relative path.
      * Usually is using to get a value from the property.

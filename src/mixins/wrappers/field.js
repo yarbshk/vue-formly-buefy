@@ -11,7 +11,9 @@ export default {
     },
     clearProperties () {
       const [type, message] = this.getValidationState()
-      return Object.assign({}, this.properties, { type, message })
+      return type && message
+        ? Object.assign({}, this.properties, { type, message })
+        : this.properties
     }
   },
   methods: {
@@ -20,9 +22,9 @@ export default {
      */
     getValidationState () {
       if (!this._formField.$dirty) return [undefined, undefined]
-      return Object.values(this._formErrors).filter(x => x).length
-        ? ['is-danger', this.getErrorMessage()]
-        : ['is-success', this.properties.message]
+      return this.hasValidationErrors()
+        ? ['is-danger', this.getFirstValidationErrorMessage()]
+        : ['is-success', this.getValidationSuccessMessage()]
     },
     /**
      * Filter controls of the wrapper by position.
