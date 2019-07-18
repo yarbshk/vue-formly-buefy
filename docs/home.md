@@ -245,6 +245,38 @@ You already know **where** configuration properties should lay. The following st
 
 ***
 
+### Monthpicker
+#### Supported Buefy features
+- [x] Non read-only
+- [x] Range
+- [ ] Footer
+- [x] Inline
+- [x] Events
+
+#### Formly types
+- `monthpicker`
+- `monthpicker-with-field`
+
+#### API structure (**`monthpicker`**)
+- events: `Object<function>`
+- properties: `Object`
+
+#### API structure (**`monthpicker-with-field`**)
+- events: `Object<function>`
+- properties: `Object`
+- wrapper: `Object`
+  - controls: `Array<Object>`
+    - options: `Object`
+    - position: `String` *
+    - type: `Object` *
+  - properties: `Object`
+
+#### Reference
+- [Basic example](https://yarbshk.github.io/vue-formly-buefy/samples/#monthpicker)
+- [Buefy docs - datepicker](https://buefy.github.io/documentation/datepicker) (half way down you will see the month picker)
+
+***
+
 ### Radio
 #### Supported Buefy features
 - [x] Sizes

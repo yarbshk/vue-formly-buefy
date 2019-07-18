@@ -8,6 +8,7 @@ import AutocompleteForm from './components/forms/AutocompleteForm.vue'
 import CheckboxForm from './components/forms/CheckboxForm.vue'
 import DatepickerForm from './components/forms/DatepickerForm.vue'
 import InputForm from './components/forms/InputForm.vue'
+import MonthpickerForm from './components/forms/MonthpickerForm.vue'
 import RadioForm from './components/forms/RadioForm.vue'
 import SelectForm from './components/forms/SelectForm.vue'
 import SwitchForm from './components/forms/SwitchForm.vue'
@@ -32,6 +33,7 @@ new Vue({
     CheckboxForm,
     DatepickerForm,
     InputForm,
+    MonthpickerForm,
     RadioForm,
     SelectForm,
     SwitchForm,

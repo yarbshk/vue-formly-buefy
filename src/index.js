@@ -3,6 +3,7 @@ import { addTypes, wrapComponent } from './utils'
 import Autocomplete from './components/fields/autocomplete'
 import Datepicker from './components/fields/datepicker'
 import Input from './components/fields/input'
+import Monthpicker from './components/fields/monthpicker'
 import Checkbox from './components/fields/checkbox'
 import Radio from './components/fields/radio'
 import Select from './components/fields/select'
@@ -28,6 +29,8 @@ const VueFormlyBuefy = {
       'datepicker-with-field': wrapComponent(Datepicker, Field.Default),
       'input': Input,
       'input-with-field': wrapComponent(Input, Field.Default),
+      'monthpicker': Monthpicker,
+      'monthpicker-with-field': wrapComponent(Monthpicker, Field.Default),
       'radio': Radio.Default,
       'radio-with-block': wrapComponent(Radio.Default, MultiBlock),
       'radio-with-field': wrapComponent(Radio.Default, Field.MultiField),
