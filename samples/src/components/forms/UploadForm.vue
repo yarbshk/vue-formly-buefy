@@ -1,6 +1,6 @@
 <script>
   import SampleBoard from '../SampleBoard.vue'
-  import * as controls from 'vue-formly-buefy/dist/controls'
+  import * as controls from 'vue-formly-buefy/dist/vue-formly-buefy-controls.min'
 
   export default {
     extends: SampleBoard,

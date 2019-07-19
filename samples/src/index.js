@@ -8,7 +8,6 @@ import AutocompleteForm from './components/forms/AutocompleteForm.vue'
 import CheckboxForm from './components/forms/CheckboxForm.vue'
 import DatepickerForm from './components/forms/DatepickerForm.vue'
 import InputForm from './components/forms/InputForm.vue'
-import MonthpickerForm from './components/forms/MonthpickerForm.vue'
 import RadioForm from './components/forms/RadioForm.vue'
 import SelectForm from './components/forms/SelectForm.vue'
 import SwitchForm from './components/forms/SwitchForm.vue'
@@ -16,7 +15,7 @@ import TaginputForm from './components/forms/TaginputForm.vue'
 import TimepickerForm from './components/forms/TimepickerForm.vue'
 import UploadForm from './components/forms/UploadForm.vue'
 
-import 'buefy/lib/buefy.css'
+import 'buefy/dist/buefy.css'
 import '@/scss/index.scss'
 
 Vue.use(Buefy)
@@ -33,7 +32,6 @@ new Vue({
     CheckboxForm,
     DatepickerForm,
     InputForm,
-    MonthpickerForm,
     RadioForm,
     SelectForm,
     SwitchForm,

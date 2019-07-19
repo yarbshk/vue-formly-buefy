@@ -12,7 +12,8 @@
         form: {},
         model: {
           datepicker: null,
-          datepickerRange: null
+          datepickerRange: null,
+          monthpicker: null
         },
         fields: [
           {
@@ -65,6 +66,24 @@
                 message: 'The date is out of range'
               }
             }
+          },
+          {
+            key: 'monthpicker',
+            type: 'datepicker-with-field',
+            required: true,
+            templateOptions: {
+              properties: {
+                'type': 'month',
+                'placeholder': 'Click to select...',
+                'icon': 'calendar-today'
+              },
+              wrapper: {
+                properties: {
+                  'addons': false,
+                  'label': 'Select a month'
+                }
+              }
+            },
           }
         ]
       }

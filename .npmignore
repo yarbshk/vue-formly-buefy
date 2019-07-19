@@ -5,9 +5,6 @@
 yarn.lock
 yarn-error.log
 
-# Docker
-docker-compose.yml
-
 # Karma
 test/
 karma.conf.js

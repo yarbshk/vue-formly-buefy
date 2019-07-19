@@ -66,9 +66,3 @@ typings/
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
-
-
-### Project ###
-src/assets/controls.js
-src/assets/vue-formly-buefy.js
-src/assets/vue-formly-buefy.min.js

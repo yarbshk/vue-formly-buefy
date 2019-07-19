@@ -1,6 +1,6 @@
 {
   "name": "vue-formly-buefy",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Simple way to validate input data in your forms.",
   "keywords": [
     "vue",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/yarbshk/vue-formly-buefy.git"
   },
-  "author": "Yuriy Rabeshko <george.rabeshko@gmail.com>",
+  "author": "Yurii Rabeshko <yurii.rabeshko@mail.com>",
   "peerDependencies": {
     "buefy": "^0.5.1",
     "vue-formly": "^2.4.5"

@@ -52,7 +52,7 @@ module.exports = {
       ...debug ? envs.development.rules : envs.production.rules,
       {
         test: /\.js$/,
-        exclude: /(node_modules|assets)/,
+        exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader']
       },
       {
@@ -80,6 +80,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src'),
       vue$: 'vue/dist/vue.esm.js'
-    }
+    },
+    symlinks: false
   }
 }
