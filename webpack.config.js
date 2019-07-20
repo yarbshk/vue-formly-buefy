@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
 const version = require('./package.json').version
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 const banner = 'VueFormlyBuefy v' + version + '\n' +
                '(c) 2017 Yuriy Rabeshko\n' +
@@ -19,6 +21,7 @@ const rules = [
 ]
 
 const plugins = [
+  new VueLoaderPlugin(),
   new webpack.DefinePlugin({
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
@@ -35,8 +38,11 @@ const resolve = {
   }
 }
 
+const nodeEnv = process.env.NODE_ENV || 'development'
+
 module.exports = [
   {
+    mode: nodeEnv,
     entry: path.resolve(__dirname, 'src/index'),
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -45,16 +51,18 @@ module.exports = [
       libraryTarget: 'umd'
     },
     module: { rules },
-    plugins: [
-      ...plugins,
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        warnings: false
-      })
-    ],
-    resolve
+    plugins,
+    resolve,
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin({
+          sourceMap: true
+        })
+      ]
+    }
   },
   {
+    mode: nodeEnv,
     entry: path.resolve(__dirname, 'src/controls'),
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -63,10 +71,12 @@ module.exports = [
       libraryTarget: 'umd'
     },
     module: { rules },
-    plugins: [
-      ...plugins,
-      new webpack.optimize.UglifyJsPlugin()
-    ],
-    resolve
+    plugins,
+    resolve,
+    optimization: {
+      minimizer: [
+        new UglifyJsPlugin()
+      ]
+    }
   }
 ]

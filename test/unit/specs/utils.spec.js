@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueFormly from 'vue-formly'
 import assert from 'assert'
 
-import { addTypes, wrapComponent, wrapElement } from 'src/utils'
+import { addTypes, wrapComponent, wrapElement } from '@/utils'
 
 Vue.use(VueFormly)
 

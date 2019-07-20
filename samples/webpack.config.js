@@ -1,6 +1,8 @@
 const webpack = require('webpack')
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 const environment = process.env.NODE_ENV || 'development'
 const debug = environment === 'development'
@@ -10,15 +12,14 @@ const envs = {
     rules: [
       {
         test: /\.(sass|scss|css)$/,
-        use: ExtractTextPlugin.extract({
+        use: ({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
         })
       }
     ],
     plugins: [
-      new webpack.optimize.UglifyJsPlugin(),
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
         filename: '[name].bundle.css',
         allChunks: true
       })
@@ -40,6 +41,7 @@ const envs = {
 }
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     app: path.resolve(__dirname, 'src/index.js')
   },
@@ -66,16 +68,24 @@ module.exports = {
           }
         }
       }
-    ]
+    ],
   },
   plugins: [
     ...debug ? envs.development.plugins : envs.production.plugins,
+    new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(environment)
       }
     })
   ],
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        sourceMap: true
+      })
+    ]
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
