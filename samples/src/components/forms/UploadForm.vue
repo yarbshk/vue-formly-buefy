@@ -1,6 +1,6 @@
 <script>
   import SampleBoard from '../SampleBoard.vue'
-  import * as controls from 'vue-formly-buefy/dist/vue-formly-buefy-controls.min'
+  import { Link, UploadList, Area } from 'vue-formly-buefy'
 
   export default {
     extends: SampleBoard,
@@ -17,7 +17,7 @@
             type: 'upload-with-field',
             templateOptions: {
               button: {
-                type: controls.Button.Link,
+                type: Link,
                 options: {
                   label: 'Click to upload',
                   icon: 'upload',
@@ -29,7 +29,7 @@
               wrapper: {
                 controls: [
                   {
-                    type: controls.UploadList,
+                    type: UploadList,
                     position: 'after',
                     options: {
                       tag: {
@@ -63,7 +63,7 @@
             type: 'upload-with-field',
             templateOptions: {
               button: {
-                type: controls.Area,
+                type: Area,
                 options: {
                   label: 'Drop your files here or click to upload'
                 }
@@ -75,7 +75,7 @@
               wrapper: {
                 controls: [
                   {
-                    type: controls.UploadList,
+                    type: UploadList,
                     position: 'after',
                     options: {
                       tag: {

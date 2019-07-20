@@ -22,7 +22,7 @@ Vue.use(Buefy)
 Vue.use(VueFormly)
 Vue.use(VueFormlyBuefy)
 
-Vue.$formly.addValidationMessage('required', 'This field is required')
+Vue.$formly.addValidationMessage('requirable.js', 'This field is required')
 
 new Vue({
   el: '#app',

@@ -7,32 +7,11 @@
       return {
         form: {},
         model: {
-          name: undefined,
           simple: '',
           grouped: '',
           multiple: [],
         },
         fields: [
-          {
-            key: "name",
-            type: "select",
-            templateOptions: {
-              options: [
-                {
-                  value: 0,
-                  text: "Jesse"
-                },
-                {
-                  value: 3,
-                  text: "John"
-                },
-                {
-                  value: 23,
-                  text: "Test"
-                }
-              ]
-            }
-          },
           {
             key: 'simple',
             type: 'select-with-field',

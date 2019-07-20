@@ -108,7 +108,7 @@ describe('BaseFormlyFieldMixin', function () {
     })
 
     it('should change dirty and active state on blur event', function () {
-      vm.form[vm.field.key].$dirty = false
+      vm.form[vm.wrappable.key].$dirty = false
       vm.toggleActiveState()
       assert.strictEqual(vm._active, true)
       vm.handleBlurEvent()

@@ -1,18 +1,25 @@
 import { addTypes, wrapComponent } from './utils'
 
-import Autocomplete from './components/fields/autocomplete'
-import Datepicker from './components/fields/datepicker'
-import Input from './components/fields/input'
-import Checkbox from './components/fields/checkbox'
-import Radio from './components/fields/radio'
-import Select from './components/fields/select'
-import Switch from './components/fields/switch'
-import Taginput from './components/fields/taginput'
-import Timepicker from './components/fields/timepicker'
-import Upload from './components/fields/upload'
+import Autocomplete from './components/controls/autocomplete'
+import Datepicker from './components/controls/datepicker'
+import Input from './components/controls/input'
+import Checkbox from './components/controls/checkbox'
+import Radio from './components/controls/radio'
+import Select from './components/controls/select'
+import Switch from './components/controls/switch'
+import Taginput from './components/controls/taginput'
+import Timepicker from './components/controls/timepicker'
+import Upload from './components/controls/upload'
 
-import MultiBlock from './components/wrappers/block'
-import Field from './components/wrappers/field'
+import Area from './components/control-sidecars/area'
+import Button from './components/control-sidecars/button'
+import Span from './components/control-sidecars/span'
+import Control from './components/control-sidecars/control'
+import Link from './components/control-sidecars/link'
+import UploadList from './components/control-sidecars/upload-list'
+
+import MultiBlock from './components/control-wrappers/block'
+import Field from './components/control-wrappers/field'
 
 const VueFormlyBuefy = {
   install (Vue, options) {
@@ -51,3 +58,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default VueFormlyBuefy
+
+export { Area, Button, Control, Link, Span, UploadList }

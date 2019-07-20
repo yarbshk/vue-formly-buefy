@@ -72,7 +72,7 @@ describe('Field.Wrapper', function () {
       assert.strictEqual(vm._dirty, false)
       assert.deepEqual(vm.getValidationState(), [undefined, undefined])
       // Check validation state on the dirty field
-      vm.form[vm.field.key].$dirty = true
+      vm.form[vm.wrappable.key].$dirty = true
       assert.strictEqual(vm._dirty, true)
       const correctErrorState = ['is-danger', 'Fill out this field!']
       assert.deepEqual(vm.getValidationState(), correctErrorState)

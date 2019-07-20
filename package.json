@@ -18,7 +18,7 @@
   "main": "dist/vue-formly-buefy.min.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/.bin/karma start"
   },
   "dependencies": {
     "vue": "^2.6.10"

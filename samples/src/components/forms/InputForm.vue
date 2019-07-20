@@ -1,6 +1,6 @@
 <script>
   import SampleBoard from '../SampleBoard.vue'
-  import * as controls from 'vue-formly-buefy/dist/vue-formly-buefy-controls.min'
+  import { Span } from 'vue-formly-buefy'
 
   export default {
     extends: SampleBoard,
@@ -99,7 +99,7 @@
               wrapper: {
                 controls: [
                   {
-                    type: controls.Span,
+                    type: Span,
                     position: 'before',
                     options: {
                       label: '+1',
