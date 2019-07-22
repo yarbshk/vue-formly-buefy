@@ -1,4 +1,7 @@
 # vue-formly-buefy
+
+> ⚠️ **The plugin is no longer being developed!** Unfortunately I enforced to announce that the new Buefy features will not be added to this plugin because of its design constraints and code redundancy. Please consider to use [VeeValidate](https://buefy.org/extensions/veevalidate/) instead (it's clear and easy solution for the problem). Thanks for everyone who was involved to the project especially our contributors!
+
 Vue.js plugin that covers the [Buefy](https://buefy.github.io) form fields for [Formly](https://github.com/formly-js/vue-formly). It lets you to validate input data in your forms. The plugin combine simplicity of the Formly form builder, lightness of the Buefy form fields and impeccability of the [Bulma](http://bulma.io/) design.
 
 Brief description of the most meaningful features:
